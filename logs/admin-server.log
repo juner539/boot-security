@@ -176,3 +176,4 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown co
 	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
 	... 114 common frames omitted
 2019-09-10 10:59:30,718 [localhost-startStop-1] INFO  -[DruidConfig.java:33]- init Druid Servlet Configuration 
+2019-09-10 13:46:18,819 [localhost-startStop-1] INFO  -[DruidConfig.java:33]- init Druid Servlet Configuration 
