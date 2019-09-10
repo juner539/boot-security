@@ -1,0 +1,332 @@
+2018-07-05 14:21:20,260 [http-nio-8080-exec-7] ==>  Preparing: select * from sys_user t where t.username = ? 
+2018-07-05 14:21:20,275 [http-nio-8080-exec-7] ==> Parameters: admin(String)
+2018-07-05 14:21:20,293 [http-nio-8080-exec-7] <==      Total: 1
+2018-07-05 14:21:20,303 [http-nio-8080-exec-7] ==>  Preparing: select distinct p.* from sys_permission p inner join sys_role_permission rp on p.id = rp.permissionId inner join sys_role_user ru on ru.roleId = rp.roleId where ru.userId = ? order by p.sort 
+2018-07-05 14:21:20,306 [http-nio-8080-exec-7] ==> Parameters: 1(Long)
+2018-07-05 14:21:20,322 [http-nio-8080-exec-7] <==      Total: 40
+2018-07-05 14:21:20,481 [taskExecutor-1] ==>  Preparing: insert into sys_logs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2018-07-05 14:21:20,490 [taskExecutor-1] ==> Parameters: 1(Long), 登陆(String), true(Boolean), null
+2018-07-05 14:21:20,497 [taskExecutor-1] <==    Updates: 1
+2018-07-05 14:21:20,881 [http-nio-8080-exec-5] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 14:21:20,884 [http-nio-8080-exec-5] ==> Parameters: 1(Long)
+2018-07-05 14:21:20,886 [http-nio-8080-exec-5] <==      Total: 1
+2018-07-05 14:21:24,654 [http-nio-8080-exec-6] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 14:21:24,661 [http-nio-8080-exec-6] ==> Parameters: 
+2018-07-05 14:21:24,664 [http-nio-8080-exec-6] <==      Total: 1
+2018-07-05 14:21:24,672 [http-nio-8080-exec-6] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 14:21:24,674 [http-nio-8080-exec-6] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:21:24,680 [http-nio-8080-exec-6] <==      Total: 1
+2018-07-05 14:24:24,806 [http-nio-8080-exec-5] ==>  Preparing: select * from t_dict t where t.type = ? 
+2018-07-05 14:24:24,808 [http-nio-8080-exec-5] ==> Parameters: userStatus(String)
+2018-07-05 14:24:24,812 [http-nio-8080-exec-5] <==      Total: 3
+2018-07-05 14:24:24,892 [http-nio-8080-exec-4] ==>  Preparing: select count(1) from sys_user t 
+2018-07-05 14:24:24,893 [http-nio-8080-exec-4] ==> Parameters: 
+2018-07-05 14:24:24,894 [http-nio-8080-exec-4] <==      Total: 1
+2018-07-05 14:24:24,895 [http-nio-8080-exec-4] ==>  Preparing: select * from sys_user t order by username desc, nickname asc limit ?, ? 
+2018-07-05 14:24:24,902 [http-nio-8080-exec-4] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:24:24,905 [http-nio-8080-exec-4] <==      Total: 4
+2018-07-05 14:24:27,665 [http-nio-8080-exec-6] ==>  Preparing: select count(1) from sys_user t 
+2018-07-05 14:24:27,671 [http-nio-8080-exec-6] ==> Parameters: 
+2018-07-05 14:24:27,678 [http-nio-8080-exec-6] <==      Total: 1
+2018-07-05 14:24:27,679 [http-nio-8080-exec-6] ==>  Preparing: select * from sys_user t order by username desc, nickname asc limit ?, ? 
+2018-07-05 14:24:27,679 [http-nio-8080-exec-6] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:24:27,681 [http-nio-8080-exec-6] <==      Total: 4
+2018-07-05 14:26:19,816 [http-nio-8080-exec-1] ==>  Preparing: select * from sys_permission t order by t.sort 
+2018-07-05 14:26:19,822 [http-nio-8080-exec-1] ==> Parameters: 
+2018-07-05 14:26:19,831 [http-nio-8080-exec-1] <==      Total: 40
+2018-07-05 14:36:30,533 [http-nio-8080-exec-9] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 14:36:30,756 [http-nio-8080-exec-9] ==> Parameters: 1(Long)
+2018-07-05 14:36:30,782 [http-nio-8080-exec-9] <==      Total: 1
+2018-07-05 14:36:33,356 [http-nio-8080-exec-3] ==>  Preparing: select * from sys_permission t order by t.sort 
+2018-07-05 14:36:33,364 [http-nio-8080-exec-3] ==> Parameters: 
+2018-07-05 14:36:33,372 [http-nio-8080-exec-3] <==      Total: 40
+2018-07-05 14:36:36,183 [http-nio-8080-exec-3] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 14:36:36,189 [http-nio-8080-exec-3] ==> Parameters: 
+2018-07-05 14:36:36,197 [http-nio-8080-exec-3] <==      Total: 1
+2018-07-05 14:36:36,200 [http-nio-8080-exec-3] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 14:36:36,209 [http-nio-8080-exec-3] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:36:36,210 [http-nio-8080-exec-3] <==      Total: 1
+2018-07-05 14:43:08,539 [http-nio-8080-exec-8] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 14:43:08,540 [http-nio-8080-exec-8] ==> Parameters: 1(Long)
+2018-07-05 14:43:08,550 [http-nio-8080-exec-8] <==      Total: 1
+2018-07-05 14:43:11,910 [http-nio-8080-exec-1] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 14:43:11,916 [http-nio-8080-exec-1] ==> Parameters: 
+2018-07-05 14:43:11,917 [http-nio-8080-exec-1] <==      Total: 1
+2018-07-05 14:43:11,918 [http-nio-8080-exec-1] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 14:43:11,919 [http-nio-8080-exec-1] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:43:11,925 [http-nio-8080-exec-1] <==      Total: 1
+2018-07-05 14:44:56,802 [http-nio-8080-exec-4] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 14:44:56,803 [http-nio-8080-exec-4] ==> Parameters: 1(Long)
+2018-07-05 14:44:56,804 [http-nio-8080-exec-4] <==      Total: 1
+2018-07-05 14:44:58,238 [http-nio-8080-exec-2] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 14:44:58,245 [http-nio-8080-exec-2] ==> Parameters: 
+2018-07-05 14:44:58,253 [http-nio-8080-exec-2] <==      Total: 1
+2018-07-05 14:44:58,255 [http-nio-8080-exec-2] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 14:44:58,262 [http-nio-8080-exec-2] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:44:58,264 [http-nio-8080-exec-2] <==      Total: 3
+2018-07-05 14:45:55,737 [http-nio-8080-exec-1] ==>  Preparing: select * from data_test t where t.id = ? 
+2018-07-05 14:45:55,738 [http-nio-8080-exec-1] ==> Parameters: 111(Long)
+2018-07-05 14:45:55,746 [http-nio-8080-exec-1] <==      Total: 1
+2018-07-05 14:45:57,557 [http-nio-8080-exec-7] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 14:45:57,567 [http-nio-8080-exec-7] ==> Parameters: 
+2018-07-05 14:45:57,568 [http-nio-8080-exec-7] <==      Total: 1
+2018-07-05 14:45:57,578 [http-nio-8080-exec-7] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 14:45:57,579 [http-nio-8080-exec-7] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:45:57,581 [http-nio-8080-exec-7] <==      Total: 3
+2018-07-05 14:51:10,952 [http-nio-8080-exec-4] ==>  Preparing: select count(1) from data_test t WHERE id = ? 
+2018-07-05 14:51:10,955 [http-nio-8080-exec-4] ==> Parameters: 11(String)
+2018-07-05 14:51:10,957 [http-nio-8080-exec-4] <==      Total: 1
+2018-07-05 14:51:12,970 [http-nio-8080-exec-3] ==>  Preparing: select count(1) from data_test t WHERE id = ? 
+2018-07-05 14:51:12,976 [http-nio-8080-exec-3] ==> Parameters: 111(String)
+2018-07-05 14:51:12,983 [http-nio-8080-exec-3] <==      Total: 1
+2018-07-05 14:51:12,984 [http-nio-8080-exec-3] ==>  Preparing: select * from data_test t WHERE id = ? order by id asc limit ?, ? 
+2018-07-05 14:51:12,990 [http-nio-8080-exec-3] ==> Parameters: 111(String), 0(Integer), 10(Integer)
+2018-07-05 14:51:12,992 [http-nio-8080-exec-3] <==      Total: 1
+2018-07-05 14:51:19,205 [http-nio-8080-exec-6] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 14:51:19,211 [http-nio-8080-exec-6] ==> Parameters: 
+2018-07-05 14:51:19,217 [http-nio-8080-exec-6] <==      Total: 1
+2018-07-05 14:51:19,218 [http-nio-8080-exec-6] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 14:51:19,223 [http-nio-8080-exec-6] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:51:19,224 [http-nio-8080-exec-6] <==      Total: 3
+2018-07-05 14:51:26,153 [http-nio-8080-exec-1] ==>  Preparing: select count(1) from data_test t WHERE id = ? 
+2018-07-05 14:51:26,159 [http-nio-8080-exec-1] ==> Parameters: %1(String)
+2018-07-05 14:51:26,168 [http-nio-8080-exec-1] <==      Total: 1
+2018-07-05 14:51:27,483 [http-nio-8080-exec-5] ==>  Preparing: select count(1) from data_test t WHERE id = ? 
+2018-07-05 14:51:27,489 [http-nio-8080-exec-5] ==> Parameters: %1(String)
+2018-07-05 14:51:27,495 [http-nio-8080-exec-5] <==      Total: 1
+2018-07-05 14:51:40,266 [http-nio-8080-exec-7] ==>  Preparing: select count(1) from data_test t WHERE id = ? 
+2018-07-05 14:51:40,273 [http-nio-8080-exec-7] ==> Parameters: %11%(String)
+2018-07-05 14:51:40,278 [http-nio-8080-exec-7] <==      Total: 1
+2018-07-05 14:51:40,678 [http-nio-8080-exec-10] ==>  Preparing: select count(1) from data_test t WHERE id = ? 
+2018-07-05 14:51:40,684 [http-nio-8080-exec-10] ==> Parameters: %11%(String)
+2018-07-05 14:51:40,685 [http-nio-8080-exec-10] <==      Total: 1
+2018-07-05 14:51:40,897 [http-nio-8080-exec-2] ==>  Preparing: select count(1) from data_test t WHERE id = ? 
+2018-07-05 14:51:40,898 [http-nio-8080-exec-2] ==> Parameters: %11%(String)
+2018-07-05 14:51:40,907 [http-nio-8080-exec-2] <==      Total: 1
+2018-07-05 14:51:43,507 [http-nio-8080-exec-9] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 14:51:43,513 [http-nio-8080-exec-9] ==> Parameters: 
+2018-07-05 14:51:43,519 [http-nio-8080-exec-9] <==      Total: 1
+2018-07-05 14:51:43,525 [http-nio-8080-exec-9] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 14:51:43,525 [http-nio-8080-exec-9] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:51:43,527 [http-nio-8080-exec-9] <==      Total: 3
+2018-07-05 14:51:44,831 [http-nio-8080-exec-8] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 14:51:44,836 [http-nio-8080-exec-8] ==> Parameters: 
+2018-07-05 14:51:44,837 [http-nio-8080-exec-8] <==      Total: 1
+2018-07-05 14:51:44,838 [http-nio-8080-exec-8] ==>  Preparing: select * from data_test t order by id desc limit ?, ? 
+2018-07-05 14:51:44,840 [http-nio-8080-exec-8] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:51:44,846 [http-nio-8080-exec-8] <==      Total: 3
+2018-07-05 14:51:45,932 [http-nio-8080-exec-4] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 14:51:45,937 [http-nio-8080-exec-4] ==> Parameters: 
+2018-07-05 14:51:45,938 [http-nio-8080-exec-4] <==      Total: 1
+2018-07-05 14:51:45,944 [http-nio-8080-exec-4] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 14:51:45,945 [http-nio-8080-exec-4] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:51:45,946 [http-nio-8080-exec-4] <==      Total: 3
+2018-07-05 14:53:02,922 [http-nio-8080-exec-1] ==>  Preparing: select count(1) from t_mail t 
+2018-07-05 14:53:02,932 [http-nio-8080-exec-1] ==> Parameters: 
+2018-07-05 14:53:02,944 [http-nio-8080-exec-1] <==      Total: 1
+2018-07-05 14:53:04,275 [http-nio-8080-exec-3] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 14:53:04,293 [http-nio-8080-exec-3] ==> Parameters: 1(Long)
+2018-07-05 14:53:04,294 [http-nio-8080-exec-3] <==      Total: 1
+2018-07-05 14:53:08,088 [http-nio-8080-exec-3] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 14:53:08,096 [http-nio-8080-exec-3] ==> Parameters: 
+2018-07-05 14:53:08,103 [http-nio-8080-exec-3] <==      Total: 1
+2018-07-05 14:53:08,106 [http-nio-8080-exec-3] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 14:53:08,115 [http-nio-8080-exec-3] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:53:08,119 [http-nio-8080-exec-3] <==      Total: 3
+2018-07-05 14:53:12,857 [http-nio-8080-exec-8] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 14:53:12,866 [http-nio-8080-exec-8] ==> Parameters: 1(Long)
+2018-07-05 14:53:12,875 [http-nio-8080-exec-8] <==      Total: 1
+2018-07-05 14:53:15,577 [http-nio-8080-exec-2] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 14:53:15,584 [http-nio-8080-exec-2] ==> Parameters: 
+2018-07-05 14:53:15,585 [http-nio-8080-exec-2] <==      Total: 1
+2018-07-05 14:53:15,587 [http-nio-8080-exec-2] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 14:53:15,588 [http-nio-8080-exec-2] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:53:15,595 [http-nio-8080-exec-2] <==      Total: 3
+2018-07-05 14:53:21,165 [http-nio-8080-exec-6] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 14:53:21,171 [http-nio-8080-exec-6] ==> Parameters: 
+2018-07-05 14:53:21,172 [http-nio-8080-exec-6] <==      Total: 1
+2018-07-05 14:53:21,179 [http-nio-8080-exec-6] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 14:53:21,179 [http-nio-8080-exec-6] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:53:21,180 [http-nio-8080-exec-6] <==      Total: 3
+2018-07-05 14:53:26,176 [http-nio-8080-exec-2] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 14:53:26,185 [http-nio-8080-exec-2] ==> Parameters: 1(Long)
+2018-07-05 14:53:26,187 [http-nio-8080-exec-2] <==      Total: 1
+2018-07-05 14:53:28,285 [http-nio-8080-exec-4] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 14:53:28,291 [http-nio-8080-exec-4] ==> Parameters: 
+2018-07-05 14:53:28,297 [http-nio-8080-exec-4] <==      Total: 1
+2018-07-05 14:53:28,298 [http-nio-8080-exec-4] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 14:53:28,305 [http-nio-8080-exec-4] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:53:28,306 [http-nio-8080-exec-4] <==      Total: 3
+2018-07-05 14:54:26,933 [http-nio-8080-exec-1] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 14:54:26,934 [http-nio-8080-exec-1] ==> Parameters: 1(Long)
+2018-07-05 14:54:26,943 [http-nio-8080-exec-1] <==      Total: 1
+2018-07-05 14:54:29,403 [http-nio-8080-exec-8] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 14:54:29,408 [http-nio-8080-exec-8] ==> Parameters: 
+2018-07-05 14:54:29,409 [http-nio-8080-exec-8] <==      Total: 1
+2018-07-05 14:54:29,411 [http-nio-8080-exec-8] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 14:54:29,411 [http-nio-8080-exec-8] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:54:29,417 [http-nio-8080-exec-8] <==      Total: 3
+2018-07-05 14:56:20,563 [http-nio-8080-exec-10] ==>  Preparing: select count(1) from t_dict t 
+2018-07-05 14:56:20,571 [http-nio-8080-exec-10] ==> Parameters: 
+2018-07-05 14:56:20,574 [http-nio-8080-exec-10] <==      Total: 1
+2018-07-05 14:56:20,583 [http-nio-8080-exec-10] ==>  Preparing: select * from t_dict t order by id asc limit ?, ? 
+2018-07-05 14:56:20,584 [http-nio-8080-exec-10] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:56:20,587 [http-nio-8080-exec-10] <==      Total: 9
+2018-07-05 14:56:37,399 [http-nio-8080-exec-3] ==>  Preparing: select count(1) from t_dict t 
+2018-07-05 14:56:37,405 [http-nio-8080-exec-3] ==> Parameters: 
+2018-07-05 14:56:37,406 [http-nio-8080-exec-3] <==      Total: 1
+2018-07-05 14:56:37,408 [http-nio-8080-exec-3] ==>  Preparing: select * from t_dict t order by id asc limit ?, ? 
+2018-07-05 14:56:37,408 [http-nio-8080-exec-3] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:56:37,418 [http-nio-8080-exec-3] <==      Total: 9
+2018-07-05 14:57:26,651 [http-nio-8080-exec-2] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 14:57:26,658 [http-nio-8080-exec-2] ==> Parameters: 
+2018-07-05 14:57:26,661 [http-nio-8080-exec-2] <==      Total: 1
+2018-07-05 14:57:26,667 [http-nio-8080-exec-2] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 14:57:26,668 [http-nio-8080-exec-2] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:57:26,670 [http-nio-8080-exec-2] <==      Total: 3
+2018-07-05 14:57:51,300 [http-nio-8080-exec-10] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 14:57:51,357 [http-nio-8080-exec-10] ==> Parameters: 1(Long)
+2018-07-05 14:57:51,368 [http-nio-8080-exec-10] <==      Total: 1
+2018-07-05 14:57:55,136 [http-nio-8080-exec-4] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 14:57:55,143 [http-nio-8080-exec-4] ==> Parameters: 
+2018-07-05 14:57:55,145 [http-nio-8080-exec-4] <==      Total: 1
+2018-07-05 14:57:55,147 [http-nio-8080-exec-4] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 14:57:55,150 [http-nio-8080-exec-4] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:57:55,159 [http-nio-8080-exec-4] <==      Total: 3
+2018-07-05 14:57:57,223 [http-nio-8080-exec-6] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 14:57:57,231 [http-nio-8080-exec-6] ==> Parameters: 1(Long)
+2018-07-05 14:57:57,232 [http-nio-8080-exec-6] <==      Total: 1
+2018-07-05 14:58:00,889 [http-nio-8080-exec-2] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 14:58:00,897 [http-nio-8080-exec-2] ==> Parameters: 
+2018-07-05 14:58:00,904 [http-nio-8080-exec-2] <==      Total: 1
+2018-07-05 14:58:00,905 [http-nio-8080-exec-2] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 14:58:00,912 [http-nio-8080-exec-2] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 14:58:00,914 [http-nio-8080-exec-2] <==      Total: 3
+2018-07-05 15:00:51,694 [http-nio-8080-exec-10] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 15:00:51,749 [http-nio-8080-exec-10] ==> Parameters: 1(Long)
+2018-07-05 15:00:51,758 [http-nio-8080-exec-10] <==      Total: 1
+2018-07-05 15:00:54,788 [http-nio-8080-exec-3] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 15:00:54,794 [http-nio-8080-exec-3] ==> Parameters: 
+2018-07-05 15:00:54,796 [http-nio-8080-exec-3] <==      Total: 1
+2018-07-05 15:00:54,798 [http-nio-8080-exec-3] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 15:00:54,802 [http-nio-8080-exec-3] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 15:00:54,811 [http-nio-8080-exec-3] <==      Total: 3
+2018-07-05 15:00:57,654 [http-nio-8080-exec-5] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 15:00:57,663 [http-nio-8080-exec-5] ==> Parameters: 1(Long)
+2018-07-05 15:00:57,664 [http-nio-8080-exec-5] <==      Total: 1
+2018-07-05 15:01:00,513 [http-nio-8080-exec-5] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 15:01:00,519 [http-nio-8080-exec-5] ==> Parameters: 
+2018-07-05 15:01:00,526 [http-nio-8080-exec-5] <==      Total: 1
+2018-07-05 15:01:00,527 [http-nio-8080-exec-5] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 15:01:00,533 [http-nio-8080-exec-5] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 15:01:00,535 [http-nio-8080-exec-5] <==      Total: 3
+2018-07-05 15:01:04,497 [http-nio-8080-exec-10] ==>  Preparing: select * from data_test t where t.id = ? 
+2018-07-05 15:01:04,504 [http-nio-8080-exec-10] ==> Parameters: 111(Long)
+2018-07-05 15:01:04,511 [http-nio-8080-exec-10] <==      Total: 1
+2018-07-05 15:01:11,384 [http-nio-8080-exec-6] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 15:01:11,385 [http-nio-8080-exec-6] ==> Parameters: 
+2018-07-05 15:01:11,387 [http-nio-8080-exec-6] <==      Total: 1
+2018-07-05 15:01:11,393 [http-nio-8080-exec-6] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 15:01:11,394 [http-nio-8080-exec-6] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 15:01:11,395 [http-nio-8080-exec-6] <==      Total: 3
+2018-07-05 15:01:13,921 [http-nio-8080-exec-5] ==>  Preparing: select * from data_test t where t.id = ? 
+2018-07-05 15:01:13,929 [http-nio-8080-exec-5] ==> Parameters: 111(Long)
+2018-07-05 15:01:13,931 [http-nio-8080-exec-5] <==      Total: 1
+2018-07-05 15:01:15,037 [http-nio-8080-exec-10] ==>  Preparing: update data_test t SET data1 = ?, data2 = ?, data3 = ?, data4 = ? where t.id = ? 
+2018-07-05 15:01:15,044 [http-nio-8080-exec-10] ==> Parameters: 121(BigDecimal), 121(BigDecimal), 12121(BigDecimal), 12121(BigDecimal), 111(Long)
+2018-07-05 15:01:15,055 [http-nio-8080-exec-10] <==    Updates: 1
+2018-07-05 15:01:17,718 [http-nio-8080-exec-2] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 15:01:17,725 [http-nio-8080-exec-2] ==> Parameters: 
+2018-07-05 15:01:17,726 [http-nio-8080-exec-2] <==      Total: 1
+2018-07-05 15:01:17,732 [http-nio-8080-exec-2] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 15:01:17,733 [http-nio-8080-exec-2] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 15:01:17,734 [http-nio-8080-exec-2] <==      Total: 3
+2018-07-05 15:02:18,392 [http-nio-8080-exec-8] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 15:02:18,519 [http-nio-8080-exec-8] ==> Parameters: 1(Long)
+2018-07-05 15:02:18,528 [http-nio-8080-exec-8] <==      Total: 1
+2018-07-05 15:02:19,617 [http-nio-8080-exec-5] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 15:02:19,628 [http-nio-8080-exec-5] ==> Parameters: 1(Long)
+2018-07-05 15:02:19,630 [http-nio-8080-exec-5] <==      Total: 1
+2018-07-05 15:02:22,501 [http-nio-8080-exec-10] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 15:02:22,508 [http-nio-8080-exec-10] ==> Parameters: 
+2018-07-05 15:02:22,516 [http-nio-8080-exec-10] <==      Total: 1
+2018-07-05 15:02:22,518 [http-nio-8080-exec-10] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 15:02:22,529 [http-nio-8080-exec-10] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 15:02:22,532 [http-nio-8080-exec-10] <==      Total: 3
+2018-07-05 15:24:25,333 [http-nio-8080-exec-9] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 15:24:25,380 [http-nio-8080-exec-9] ==> Parameters: 1(Long)
+2018-07-05 15:24:25,390 [http-nio-8080-exec-9] <==      Total: 1
+2018-07-05 15:24:29,888 [http-nio-8080-exec-2] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 15:24:29,895 [http-nio-8080-exec-2] ==> Parameters: 
+2018-07-05 15:24:29,897 [http-nio-8080-exec-2] <==      Total: 1
+2018-07-05 15:24:29,899 [http-nio-8080-exec-2] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 15:24:29,902 [http-nio-8080-exec-2] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 15:24:29,912 [http-nio-8080-exec-2] <==      Total: 3
+2018-07-05 16:10:18,068 [http-nio-8080-exec-9] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 16:10:18,132 [http-nio-8080-exec-9] ==> Parameters: 1(Long)
+2018-07-05 16:10:18,146 [http-nio-8080-exec-9] <==      Total: 1
+2018-07-05 16:18:37,101 [http-nio-8080-exec-4] ==>  Preparing: select * from sys_user t where t.username = ? 
+2018-07-05 16:18:37,180 [http-nio-8080-exec-4] ==> Parameters: admin(String)
+2018-07-05 16:18:37,192 [http-nio-8080-exec-4] <==      Total: 1
+2018-07-05 16:18:37,204 [http-nio-8080-exec-4] ==>  Preparing: select distinct p.* from sys_permission p inner join sys_role_permission rp on p.id = rp.permissionId inner join sys_role_user ru on ru.roleId = rp.roleId where ru.userId = ? order by p.sort 
+2018-07-05 16:18:37,215 [http-nio-8080-exec-4] ==> Parameters: 1(Long)
+2018-07-05 16:18:37,224 [http-nio-8080-exec-4] <==      Total: 40
+2018-07-05 16:18:37,337 [http-nio-8080-exec-8] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 16:18:37,342 [http-nio-8080-exec-8] ==> Parameters: 1(Long)
+2018-07-05 16:18:37,370 [http-nio-8080-exec-8] <==      Total: 1
+2018-07-05 16:21:31,984 [http-nio-8080-exec-8] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 16:21:32,191 [http-nio-8080-exec-8] ==> Parameters: 1(Long)
+2018-07-05 16:21:32,203 [http-nio-8080-exec-8] <==      Total: 1
+2018-07-05 16:21:34,803 [http-nio-8080-exec-5] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 16:21:34,810 [http-nio-8080-exec-5] ==> Parameters: 
+2018-07-05 16:21:34,812 [http-nio-8080-exec-5] <==      Total: 1
+2018-07-05 16:22:56,999 [http-nio-8080-exec-5] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 16:23:16,702 [http-nio-8080-exec-9] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 16:23:16,756 [http-nio-8080-exec-9] ==> Parameters: 1(Long)
+2018-07-05 16:23:16,766 [http-nio-8080-exec-9] <==      Total: 1
+2018-07-05 16:23:19,679 [http-nio-8080-exec-6] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 16:23:19,688 [http-nio-8080-exec-6] ==> Parameters: 
+2018-07-05 16:23:19,690 [http-nio-8080-exec-6] <==      Total: 1
+2018-07-05 16:23:19,701 [http-nio-8080-exec-6] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 16:23:19,707 [http-nio-8080-exec-6] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 16:23:19,719 [http-nio-8080-exec-6] <==      Total: 3
+2018-07-05 16:28:04,712 [http-nio-8080-exec-6] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 16:28:04,714 [http-nio-8080-exec-6] ==> Parameters: 
+2018-07-05 16:30:01,182 [http-nio-8080-exec-5] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 16:30:01,198 [http-nio-8080-exec-5] ==> Parameters: 1(Long)
+2018-07-05 16:30:01,211 [http-nio-8080-exec-5] <==      Total: 1
+2018-07-05 16:30:04,877 [http-nio-8080-exec-10] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 16:30:04,885 [http-nio-8080-exec-10] ==> Parameters: 
+2018-07-05 16:30:04,886 [http-nio-8080-exec-10] <==      Total: 1
+2018-07-05 16:30:04,889 [http-nio-8080-exec-10] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 16:30:04,891 [http-nio-8080-exec-10] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 16:30:04,901 [http-nio-8080-exec-10] <==      Total: 3
+2018-07-05 16:30:48,257 [http-nio-8080-exec-10] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 16:30:48,258 [http-nio-8080-exec-10] ==> Parameters: 
+2018-07-05 16:31:59,362 [http-nio-8080-exec-10] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 16:31:59,412 [http-nio-8080-exec-10] ==> Parameters: 1(Long)
+2018-07-05 16:31:59,422 [http-nio-8080-exec-10] <==      Total: 1
+2018-07-05 16:32:02,613 [http-nio-8080-exec-5] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 16:32:02,620 [http-nio-8080-exec-5] ==> Parameters: 
+2018-07-05 16:32:02,623 [http-nio-8080-exec-5] <==      Total: 1
+2018-07-05 16:32:02,626 [http-nio-8080-exec-5] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 16:32:02,628 [http-nio-8080-exec-5] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 16:32:02,638 [http-nio-8080-exec-5] <==      Total: 3
+2018-07-05 16:32:02,641 [http-nio-8080-exec-5] ==>  Preparing: select count(1) from data_test t 
+2018-07-05 16:32:02,641 [http-nio-8080-exec-5] ==> Parameters: 
+2018-07-05 16:32:02,642 [http-nio-8080-exec-5] <==      Total: 1
+2018-07-05 16:32:02,644 [http-nio-8080-exec-5] ==>  Preparing: select * from data_test t order by id asc limit ?, ? 
+2018-07-05 16:32:02,644 [http-nio-8080-exec-5] ==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 16:32:02,646 [http-nio-8080-exec-5] <==      Total: 3
+2018-07-05 19:49:55,463 [http-nio-8080-exec-4] ==>  Preparing: select * from sys_user t where t.username = ? 
+2018-07-05 19:49:55,473 [http-nio-8080-exec-4] ==> Parameters: admin(String)
+2018-07-05 19:49:55,485 [http-nio-8080-exec-4] <==      Total: 1
+2018-07-05 19:49:55,495 [http-nio-8080-exec-4] ==>  Preparing: select distinct p.* from sys_permission p inner join sys_role_permission rp on p.id = rp.permissionId inner join sys_role_user ru on ru.roleId = rp.roleId where ru.userId = ? order by p.sort 
+2018-07-05 19:49:55,510 [http-nio-8080-exec-4] ==> Parameters: 1(Long)
+2018-07-05 19:49:55,520 [http-nio-8080-exec-4] <==      Total: 40
+2018-07-05 19:49:55,693 [taskExecutor-1] ==>  Preparing: insert into sys_logs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2018-07-05 19:49:55,706 [taskExecutor-1] ==> Parameters: 1(Long), 登陆(String), true(Boolean), null
+2018-07-05 19:49:55,721 [taskExecutor-1] <==    Updates: 1
+2018-07-05 19:49:56,162 [http-nio-8080-exec-6] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-07-05 19:49:56,165 [http-nio-8080-exec-6] ==> Parameters: 1(Long)
+2018-07-05 19:49:56,168 [http-nio-8080-exec-6] <==      Total: 1

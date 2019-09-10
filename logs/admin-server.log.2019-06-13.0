@@ -1,0 +1,7 @@
+2019-06-13 20:12:35,402 [localhost-startStop-1] INFO  -[DruidConfig.java:33]- init Druid Servlet Configuration 
+2019-06-13 20:32:28,776 [http-nio-8080-exec-3] DEBUG -[TemplateUtil.java:47]- 生成java model：JunYgimg模板
+2019-06-13 20:32:28,782 [http-nio-8080-exec-3] DEBUG -[TemplateUtil.java:129]- 生成java dao：JunYgimg模板
+2019-06-13 20:32:28,792 [http-nio-8080-exec-3] DEBUG -[TemplateUtil.java:243]- 生成controller：JunYgimg模板
+2019-06-13 20:32:28,797 [http-nio-8080-exec-3] DEBUG -[TemplateUtil.java:259]- 生成查询页面：JunYgimg模板
+2019-06-13 20:32:28,801 [http-nio-8080-exec-3] DEBUG -[TemplateUtil.java:265]- 生成添加页面：JunYgimg模板
+2019-06-13 20:32:28,809 [http-nio-8080-exec-3] DEBUG -[TemplateUtil.java:272]- 生成修改页面：JunYgimg模板

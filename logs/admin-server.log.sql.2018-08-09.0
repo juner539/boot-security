@@ -1,0 +1,78 @@
+2018-08-09 10:56:41,750 [http-nio-8080-exec-10] ==>  Preparing: select * from sys_user t where t.username = ? 
+2018-08-09 10:56:41,766 [http-nio-8080-exec-10] ==> Parameters: admin(String)
+2018-08-09 10:56:41,791 [http-nio-8080-exec-10] <==      Total: 1
+2018-08-09 10:56:41,802 [http-nio-8080-exec-10] ==>  Preparing: select distinct p.* from sys_permission p inner join sys_role_permission rp on p.id = rp.permissionId inner join sys_role_user ru on ru.roleId = rp.roleId where ru.userId = ? order by p.sort 
+2018-08-09 10:56:41,805 [http-nio-8080-exec-10] ==> Parameters: 1(Long)
+2018-08-09 10:56:41,840 [http-nio-8080-exec-10] <==      Total: 40
+2018-08-09 10:56:42,002 [taskExecutor-1] ==>  Preparing: insert into sys_logs(userId, module, flag, remark, createTime) values(?, ?, ?, ?, now()) 
+2018-08-09 10:56:42,011 [taskExecutor-1] ==> Parameters: 1(Long), 登陆(String), true(Boolean), null
+2018-08-09 10:56:42,028 [taskExecutor-1] <==    Updates: 1
+2018-08-09 10:56:42,444 [http-nio-8080-exec-3] ==>  Preparing: select count(1) from t_notice t left join t_notice_read r on r.noticeId = t.id and r.userId = ? where t.status = 1 and r.userId is null 
+2018-08-09 10:56:42,446 [http-nio-8080-exec-3] ==> Parameters: 1(Long)
+2018-08-09 10:56:42,467 [http-nio-8080-exec-3] <==      Total: 1
+2018-08-09 10:56:53,965 [http-nio-8080-exec-9] ==>  Preparing: select count(1) from file_info t 
+2018-08-09 10:56:53,972 [http-nio-8080-exec-9] ==> Parameters: 
+2018-08-09 10:56:53,980 [http-nio-8080-exec-9] <==      Total: 1
+2018-08-09 10:56:54,004 [http-nio-8080-exec-9] ==>  Preparing: select * from file_info t order by updateTime desc limit ?, ? 
+2018-08-09 10:56:54,007 [http-nio-8080-exec-9] ==> Parameters: 0(Integer), 10(Integer)
+2018-08-09 10:56:54,014 [http-nio-8080-exec-9] <==      Total: 1
+2018-08-09 10:57:21,502 [http-nio-8080-exec-4] ==>  Preparing: select count(1) from t_dict t 
+2018-08-09 10:57:21,510 [http-nio-8080-exec-4] ==> Parameters: 
+2018-08-09 10:57:21,518 [http-nio-8080-exec-4] <==      Total: 1
+2018-08-09 10:57:21,526 [http-nio-8080-exec-4] ==>  Preparing: select * from t_dict t order by id asc limit ?, ? 
+2018-08-09 10:57:21,527 [http-nio-8080-exec-4] ==> Parameters: 0(Integer), 10(Integer)
+2018-08-09 10:57:21,529 [http-nio-8080-exec-4] <==      Total: 9
+2018-08-09 10:57:32,271 [http-nio-8080-exec-4] ==>  Preparing: select count(1) from t_job t 
+2018-08-09 10:57:32,279 [http-nio-8080-exec-4] ==> Parameters: 
+2018-08-09 10:57:32,289 [http-nio-8080-exec-4] <==      Total: 1
+2018-08-09 10:57:40,340 [http-nio-8080-exec-7] ==>  Preparing: select count(1) from t_mail t 
+2018-08-09 10:57:40,348 [http-nio-8080-exec-7] ==> Parameters: 
+2018-08-09 10:57:40,362 [http-nio-8080-exec-7] <==      Total: 1
+2018-08-09 10:57:41,557 [http-nio-8080-exec-8] ==>  Preparing: select count(1) from sys_logs t left join sys_user u on u.id = t.userId 
+2018-08-09 10:57:41,564 [http-nio-8080-exec-8] ==> Parameters: 
+2018-08-09 10:57:41,565 [http-nio-8080-exec-8] <==      Total: 1
+2018-08-09 10:57:41,573 [http-nio-8080-exec-8] ==>  Preparing: select t.*, u.username, u.nickname from sys_logs t left join sys_user u on u.id = t.userId order by createTime desc limit ?, ? 
+2018-08-09 10:57:41,574 [http-nio-8080-exec-8] ==> Parameters: 0(Integer), 10(Integer)
+2018-08-09 10:57:41,580 [http-nio-8080-exec-8] <==      Total: 10
+2018-08-09 10:57:42,674 [http-nio-8080-exec-2] ==>  Preparing: select * from t_dict t where t.type = ? 
+2018-08-09 10:57:42,681 [http-nio-8080-exec-2] ==> Parameters: noticeStatus(String)
+2018-08-09 10:57:42,682 [http-nio-8080-exec-2] <==      Total: 2
+2018-08-09 10:57:42,721 [http-nio-8080-exec-10] ==>  Preparing: select count(1) from t_notice t 
+2018-08-09 10:57:42,722 [http-nio-8080-exec-10] ==> Parameters: 
+2018-08-09 10:57:42,730 [http-nio-8080-exec-10] <==      Total: 1
+2018-08-09 10:57:42,731 [http-nio-8080-exec-10] ==>  Preparing: select * from t_notice t order by updateTime desc, title desc limit ?, ? 
+2018-08-09 10:57:42,732 [http-nio-8080-exec-10] ==> Parameters: 0(Integer), 10(Integer)
+2018-08-09 10:57:42,735 [http-nio-8080-exec-10] <==      Total: 1
+2018-08-09 10:57:45,517 [http-nio-8080-exec-4] ==>  Preparing: select * from sys_permission t order by t.sort 
+2018-08-09 10:57:45,525 [http-nio-8080-exec-4] ==> Parameters: 
+2018-08-09 10:57:45,535 [http-nio-8080-exec-4] <==      Total: 40
+2018-08-09 10:58:01,532 [http-nio-8080-exec-9] ==>  Preparing: select count(1) from t_job t 
+2018-08-09 10:58:01,539 [http-nio-8080-exec-9] ==> Parameters: 
+2018-08-09 10:58:01,541 [http-nio-8080-exec-9] <==      Total: 1
+2018-08-09 10:58:02,187 [http-nio-8080-exec-7] ==>  Preparing: select count(1) from t_job t 
+2018-08-09 10:58:02,187 [http-nio-8080-exec-7] ==> Parameters: 
+2018-08-09 10:58:02,195 [http-nio-8080-exec-7] <==      Total: 1
+2018-08-09 10:58:05,635 [http-nio-8080-exec-1] ==>  Preparing: select count(1) from t_job t 
+2018-08-09 10:58:05,643 [http-nio-8080-exec-1] ==> Parameters: 
+2018-08-09 10:58:05,650 [http-nio-8080-exec-1] <==      Total: 1
+2018-08-09 10:58:06,419 [http-nio-8080-exec-2] ==>  Preparing: select count(1) from t_job t 
+2018-08-09 10:58:06,420 [http-nio-8080-exec-2] ==> Parameters: 
+2018-08-09 10:58:06,421 [http-nio-8080-exec-2] <==      Total: 1
+2018-08-09 10:58:07,516 [http-nio-8080-exec-8] ==>  Preparing: select count(1) from t_job t 
+2018-08-09 10:58:07,523 [http-nio-8080-exec-8] ==> Parameters: 
+2018-08-09 10:58:07,524 [http-nio-8080-exec-8] <==      Total: 1
+2018-08-09 10:58:07,827 [http-nio-8080-exec-5] ==>  Preparing: select count(1) from t_job t 
+2018-08-09 10:58:07,827 [http-nio-8080-exec-5] ==> Parameters: 
+2018-08-09 10:58:07,835 [http-nio-8080-exec-5] <==      Total: 1
+2018-08-09 10:58:08,308 [http-nio-8080-exec-3] ==>  Preparing: select count(1) from t_job t 
+2018-08-09 10:58:08,309 [http-nio-8080-exec-3] ==> Parameters: 
+2018-08-09 10:58:08,310 [http-nio-8080-exec-3] <==      Total: 1
+2018-08-09 10:58:51,684 [http-nio-8080-exec-1] ==>  Preparing: select * from t_dict t where t.type = ? 
+2018-08-09 10:58:51,691 [http-nio-8080-exec-1] ==> Parameters: userStatus(String)
+2018-08-09 10:58:51,698 [http-nio-8080-exec-1] <==      Total: 3
+2018-08-09 10:58:51,754 [http-nio-8080-exec-5] ==>  Preparing: select count(1) from sys_user t 
+2018-08-09 10:58:51,763 [http-nio-8080-exec-5] ==> Parameters: 
+2018-08-09 10:58:51,764 [http-nio-8080-exec-5] <==      Total: 1
+2018-08-09 10:58:51,765 [http-nio-8080-exec-5] ==>  Preparing: select * from sys_user t order by username desc, nickname asc limit ?, ? 
+2018-08-09 10:58:51,766 [http-nio-8080-exec-5] ==> Parameters: 0(Integer), 10(Integer)
+2018-08-09 10:58:51,774 [http-nio-8080-exec-5] <==      Total: 4
