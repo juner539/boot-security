@@ -12,26 +12,32 @@ public class JunLabelrecord extends BaseEntity<Long> {
 	public String getImageId() {
 		return imageId;
 	}
-	public String setImageId() {
-		return imageId;
+
+	public void setImageId(String imageId) {
+		this.imageId = imageId;
 	}
+
 	public Integer getImageType() {
 		return imageType;
 	}
-	public Integer setImageType() {
-		return imageType;
+
+	public void setImageType(Integer imageType) {
+		this.imageType = imageType;
 	}
+
 	public String getLabelId() {
 		return labelId;
 	}
-	public String setLabelId() {
-		return labelId;
+
+	public void setLabelId(String labelId) {
+		this.labelId = labelId;
 	}
+
 	public String getLabelUser() {
 		return labelUser;
 	}
-	public String setLabelUser() {
-		return labelUser;
-	}
 
+	public void setLabelUser(String labelUser) {
+		this.labelUser = labelUser;
+	}
 }

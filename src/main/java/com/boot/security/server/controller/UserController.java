@@ -7,13 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.boot.security.server.annotation.LogAnnotation;
 import com.boot.security.server.dao.UserDao;
@@ -130,6 +124,13 @@ public class UserController {
 	public List<String> getAllUsername(){
 		return userDao.listAllUsername();
 	}
+
+	@RequestMapping(value = "/getRoleId",method = RequestMethod.GET)
+	@ApiOperation(value = "获取roleid")
+	public int getRoleId(){
+		return userDao.queryUserRoleId(UserUtil.getLoginUser().getId());
+	}
+
 
 
 }

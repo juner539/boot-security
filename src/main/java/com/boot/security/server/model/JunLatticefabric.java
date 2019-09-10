@@ -15,44 +15,56 @@ public class JunLatticefabric extends BaseEntity<Long> {
 	public String getImageUrl() {
 		return imageUrl;
 	}
-	public String setImageUrl() {
-		return imageUrl;
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
+
 	public String getImageType() {
 		return imageType;
 	}
-	public String setImageType() {
-		return imageType;
+
+	public void setImageType(String imageType) {
+		this.imageType = imageType;
 	}
+
 	public String getFineTexture() {
 		return fineTexture;
 	}
-	public String setFineTexture() {
-		return fineTexture;
+
+	public void setFineTexture(String fineTexture) {
+		this.fineTexture = fineTexture;
 	}
+
 	public String getWarpArrangement() {
 		return warpArrangement;
 	}
-	public String setWarpArrangement() {
-		return warpArrangement;
+
+	public void setWarpArrangement(String warpArrangement) {
+		this.warpArrangement = warpArrangement;
 	}
+
 	public String getWeftArrangement() {
 		return weftArrangement;
 	}
-	public String setWeftArrangement() {
-		return weftArrangement;
+
+	public void setWeftArrangement(String weftArrangement) {
+		this.weftArrangement = weftArrangement;
 	}
+
 	public String getFabricStyle() {
 		return fabricStyle;
 	}
-	public String setFabricStyle() {
-		return fabricStyle;
+
+	public void setFabricStyle(String fabricStyle) {
+		this.fabricStyle = fabricStyle;
 	}
+
 	public String getRemarks() {
 		return remarks;
 	}
-	public String setRemarks() {
-		return remarks;
-	}
 
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
 }

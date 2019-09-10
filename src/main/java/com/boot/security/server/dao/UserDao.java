@@ -43,4 +43,7 @@ public interface UserDao {
 
 	@Select("SELECT t.username FROM sys_user t")
 	List<String> listAllUsername();
+
+	@Select("select sru.roleId from sys_role_user sru where 1=1 and sru.userId = #{userId}")
+	int queryUserRoleId(long userId);
 }

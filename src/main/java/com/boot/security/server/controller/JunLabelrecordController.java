@@ -74,4 +74,5 @@ public class JunLabelrecordController {
     public void delete(@PathVariable Long id) {
         junLabelrecordDao.delete(id);
     }
+
 }

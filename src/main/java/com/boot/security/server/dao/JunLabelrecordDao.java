@@ -30,4 +30,6 @@ public interface JunLabelrecordDao {
     int count(@Param("params") Map<String, Object> params);
 
     List<JunLabelrecord> list(@Param("params") Map<String, Object> params, @Param("offset") Integer offset, @Param("limit") Integer limit);
+
+    int queryLabeledNum(@Param("labelUser") String labelUser, @Param("imageGroup") String imageGroup);
 }
