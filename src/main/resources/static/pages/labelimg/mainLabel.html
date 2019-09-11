@@ -32,13 +32,14 @@
 		<input type="hidden" name="id" id="id">
 		<input type="hidden" name="imageUrl" id="imageUrl">
 		<input type="hidden" name="labeledNum" id="labeledNum">
+		<input type="hidden" name="taskId" id="taskId">
 		<div class="layui-form-item">
 			<label class="layui-form-label">织物种类：</label>
 			<div class="layui-input-block " >
-				<input type="radio" lay-filter="zhongleifilter" name="zhonglei" id="plain" value="plain" title="素色" checked>
-				<input type="radio" lay-filter="zhongleifilter" name="zhonglei" id="stripe" value="stripe" title="条纹" >
-				<input type="radio" lay-filter="zhongleifilter" name="zhonglei" id="lattice" value="lattice" title="格子">
-				<input type="radio" lay-filter="zhongleifilter" name="zhonglei" id="pattern" value="pattern" title="花纹">
+				<input type="radio" lay-filter="zhongleifilter" name="imageType" id="plain" value="plain" title="素色" checked>
+				<input type="radio" lay-filter="zhongleifilter" name="imageType" id="stripe" value="stripe" title="条纹" >
+				<input type="radio" lay-filter="zhongleifilter" name="imageType" id="lattice" value="lattice" title="格子">
+				<input type="radio" lay-filter="zhongleifilter" name="imageType" id="pattern" value="pattern" title="花纹">
 			</div>
 		</div>
 		<br>
@@ -149,11 +150,11 @@
 						</div>-->
 						<label class='col-md-4 layui-form-label'>经纱排列：</label>
 						<div class="col-md-8 layui-inline">
-							<input class='layui-input' placeholder='经纱条纹排列' type='text' name='stripeArrangement' id='warpArrangement' >
+							<input class='layui-input' placeholder='经纱条纹排列' type='text' name='warpArrangement' id='warpArrangement' >
 						</div>
 						<label class='col-md-4 layui-form-label'>纬纱排列：</label>
 						<div class="col-md-8 layui-inline">
-							<input class='layui-input' placeholder='纬纱条纹排列' type='text' name='stripeArrangement' id='weftArrangement' >
+							<input class='layui-input' placeholder='纬纱条纹排列' type='text' name='weftArrangement' id='weftArrangement' >
 						</div>
 						<label class='col-md-4 layui-form-label'>备注：</label>
 						<div class="col-md-8 layui-inline">
@@ -249,14 +250,55 @@
                 labeledNum=1;
             }
 		    var taskId = $("#taskId").val();
+            console.log(formdata.fineTexture);
+            var fin = "";
+            for(var s in formdata.fineTexture){
+            	if (s != ""){
+            		fin = s;
+				}
+			}
+            formdata.fineTexture = fin;
+			var re = "";
+			for(var s in formdata.remarks){
+				if (s != ""){
+					re = s;
+				}
+			}
+			formdata.remarks = re;
+			var ar = "";
+			for(var s in formdata.stripeArrangement){
+				if (s != ""){
+					ar = s;
+				}
+			}
+			formdata.stripeArrangement = ar;
+
+			var fs = "";
+			for(var s in formdata.fabricStyle){
+				if (s != ""){
+					fs = s;
+				}
+			}
+			formdata.fabricStyle = fs;
+			if (formdata.stripeArrangement == null){
+				formdata.stripeArrangement = "";
+			}
+			if (formdata.weftArrangement == null){
+				formdata.weftArrangement = "";
+			}
+			if (formdata.warpArrangement == null){
+				formdata.warpArrangement = "";
+			}
+            console.log(JSON.stringify(formdata));
 			$.ajax({
 				type : 'post',
-				url : '/junLatticefabrics',	 	// TODO 保存当前记录
+				url : '/junLabelrecords/nextImage',	 	// TODO 保存当前记录
 				contentType: "application/json; charset=utf-8",  
 				data : JSON.stringify(formdata),
 				success : function(data) {
 					layer.msg("保存成功", {shift: -1, time: 1000}, function(){
-                        window.location.href = "pages/labelimg/mainLabel.html?taskId="+taskId+"&labeledNum="+labeledNum;
+                        //todo 报404错误
+						window.location.href = "pages/labelimg/mainLabel.html?taskId="+taskId+"&labeledNum="+(labeledNum+1);
                     });
 				}
 			});
@@ -282,11 +324,13 @@
 		    $(".layui-colla-title").css("font-size","x-large");
 		    $(".layui-colla-title").css("font-weight","bold");
             var taskId = getUrlParam("taskId");	//
+			$("#taskId").val(taskId);
 			if(taskId!=""){
-			    console.log(taskId);
+			    //console.log(taskId);
                 var labeledNum = getUrlParam("labeledNum");	//
                 $("#labeledNum").val(labeledNum);
                 $("#currentNum").html(labeledNum);
+
 			    /////// 测试用 后面删除
                 var url="/statics/34573E.R-3.jpg";
                 var imgpath = ""+url+"?token="+localStorage.getItem("token");
@@ -296,13 +340,15 @@
 				//加载数据 获取用户标记到的位置
                 $.ajax({
                     type : 'get',
-                    url : '/junTaskinfos/'+taskId+'/'+labeledNum,		//TODO 根据任务ID 获取图片路径
+                    url : '/junTaskinfos/getCurTaskOption/'+taskId+'/'+labeledNum,		//TODO 根据任务ID 获取图片路径
                     async : false,
                     success : function(data) {
-                        var url=data.url;
+                    	//console.log(data);
+                        var url=data;
                         var imgpath = ""+url+"?token="+localStorage.getItem("token");
                         imgpath = imgpath.substr(18,imgpath.length)
-                        imgpath ='/statics/'+imgpath;
+						imgpath ='/statics/'+imgpath;
+						$('#imageUrl').val(data);
                         if(url.endsWith('.jpg') || url.endsWith('.bmp') || url.endsWith('.png') || url.endsWith('.gif')){
                             $('#demo2').append($("<img id='showImg1'  style='width: 80%;border-style:dashed;border-color:#FF9900;border-width:1px;' title='附件' alt='附件格式不支持预览'></img>").attr("src",imgpath))
                         }

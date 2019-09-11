@@ -4,32 +4,32 @@ import java.util.Date;
 
 public class JunLabelrecord extends BaseEntity<Long> {
 
-	private String imageId;
-	private Integer imageType;
-	private String labelId;
+	private long imageId;
+	private String imageType;
+	private long labelId;
 	private String labelUser;
 
-	public String getImageId() {
+	public Long getImageId() {
 		return imageId;
 	}
 
-	public void setImageId(String imageId) {
+	public void setImageId(Long imageId) {
 		this.imageId = imageId;
 	}
 
-	public Integer getImageType() {
+	public String getImageType() {
 		return imageType;
 	}
 
-	public void setImageType(Integer imageType) {
+	public void setImageType(String imageType) {
 		this.imageType = imageType;
 	}
 
-	public String getLabelId() {
+	public long getLabelId() {
 		return labelId;
 	}
 
-	public void setLabelId(String labelId) {
+	public void setLabelId(long labelId) {
 		this.labelId = labelId;
 	}
 

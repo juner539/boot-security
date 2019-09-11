@@ -2,15 +2,89 @@ package com.boot.security.server.model;
 
 public class JunAllfabric extends BaseEntity<Long> {
 
+	private int ispattern;
+	private Long id;
+	private int isplain;
+	private int labeledNum;
+	private int isstripe;
+	private String stripeStype;
+	private int islattice;
 	private String imageUrl;
 	private String imageType;
 	private String fineTexture;
 	private String warpArrangement;
+	private String stripeArrangement;
 	private String weftArrangement;
 	private String fabricStyle;
 	private String remarks;
 	private String formProcess;
 	private String colorType;
+
+	public int getIspattern() {
+		return ispattern;
+	}
+
+	public void setIspattern(int ispattern) {
+		this.ispattern = ispattern;
+	}
+
+	@Override
+	public Long getId() {
+		return id;
+	}
+
+	@Override
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public int getIsplain() {
+		return isplain;
+	}
+
+	public void setIsplain(int isplain) {
+		this.isplain = isplain;
+	}
+
+	public int getLabeledNum() {
+		return labeledNum;
+	}
+
+	public void setLabeledNum(int labeledNum) {
+		this.labeledNum = labeledNum;
+	}
+
+	public int getIsstripe() {
+		return isstripe;
+	}
+
+	public void setIsstripe(int isstripe) {
+		this.isstripe = isstripe;
+	}
+
+	public String getStripeStype() {
+		return stripeStype;
+	}
+
+	public void setStripeStype(String stripeStype) {
+		this.stripeStype = stripeStype;
+	}
+
+	public int getIslattice() {
+		return islattice;
+	}
+
+	public void setIslattice(int islattice) {
+		this.islattice = islattice;
+	}
+
+	public String getStripeArrangement() {
+		return stripeArrangement;
+	}
+
+	public void setStripeArrangement(String stripeArrangement) {
+		this.stripeArrangement = stripeArrangement;
+	}
 
 	public String getFormProcess() {
 		return formProcess;
