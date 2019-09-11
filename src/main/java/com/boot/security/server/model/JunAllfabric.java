@@ -1,15 +1,32 @@
 package com.boot.security.server.model;
 
-import java.util.Date;
-
-public class JunPatternfabric extends BaseEntity<Long> {
+public class JunAllfabric extends BaseEntity<Long> {
 
 	private String imageUrl;
 	private String imageType;
 	private String fineTexture;
-	private String formProcess;
+	private String warpArrangement;
+	private String weftArrangement;
 	private String fabricStyle;
 	private String remarks;
+	private String formProcess;
+	private String colorType;
+
+	public String getFormProcess() {
+		return formProcess;
+	}
+
+	public void setFormProcess(String formProcess) {
+		this.formProcess = formProcess;
+	}
+
+	public String getColorType() {
+		return colorType;
+	}
+
+	public void setColorType(String colorType) {
+		this.colorType = colorType;
+	}
 
 	public String getImageUrl() {
 		return imageUrl;
@@ -35,12 +52,20 @@ public class JunPatternfabric extends BaseEntity<Long> {
 		this.fineTexture = fineTexture;
 	}
 
-	public String getFormProcess() {
-		return formProcess;
+	public String getWarpArrangement() {
+		return warpArrangement;
 	}
 
-	public void setFormProcess(String formProcess) {
-		this.formProcess = formProcess;
+	public void setWarpArrangement(String warpArrangement) {
+		this.warpArrangement = warpArrangement;
+	}
+
+	public String getWeftArrangement() {
+		return weftArrangement;
+	}
+
+	public void setWeftArrangement(String weftArrangement) {
+		this.weftArrangement = weftArrangement;
 	}
 
 	public String getFabricStyle() {

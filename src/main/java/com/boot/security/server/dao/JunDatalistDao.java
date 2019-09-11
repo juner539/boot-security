@@ -33,4 +33,7 @@ public interface JunDatalistDao {
 
     @Select("SELECT t.imageGroup from jun_datalist t GROUP BY t.imageGroup")
     List<String> listgroup();
+
+    @Select("SELECT t.* FROM jun_datalist t WHERE t.imageGroup = #{imageGroup}")
+    List<JunDatalist> listByImageGroup(String imageGroup);
 }

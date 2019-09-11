@@ -69,4 +69,11 @@
 		where t.id = #{id}
 	</update>
 
+	<select id="queryLabeledNum" resultType="int">
+		SELECT count(*) FROM jun_datalist dl, jun_labelrecord lr
+		WHERE dl.id = lr.imageId
+		AND lr.labelUser = #{labelUser}
+		AND dl.imageGroup = #{imageGroup}
+	</select>
+
 </mapper>
