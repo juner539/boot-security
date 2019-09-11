@@ -99,9 +99,10 @@ public class JunTaskinfoController {
         return junDatalistDao.listgroup();
     }
 
-    @RequestMapping(value = "/getCurTaskOption/{taskId}/{labeledNum}",method = RequestMethod.GET)
+    @RequestMapping(value = "/getCurTaskOption/{taskId}",method = RequestMethod.GET)
     @ApiOperation(value = "获取当前任务节点")
-    public String getCurTaskOption(@PathVariable Long taskId, @PathVariable int labeledNum){
+    public String getCurTaskOption(@PathVariable Long taskId){
+        int labeledNum = junLabelrecordDao.queryLabeledNum(UserUtil.getLoginUser().getUsername(),junTaskinfoDao.getById(taskId).getImageGroup());
         JunTaskinfo junTaskinfo = junTaskinfoDao.getById(taskId);
         List<JunDatalist> datalists = junDatalistDao.listByImageGroup(junTaskinfo.getImageGroup());
         return datalists.get(labeledNum).getImageUrl();

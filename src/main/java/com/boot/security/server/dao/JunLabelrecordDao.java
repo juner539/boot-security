@@ -33,5 +33,5 @@ public interface JunLabelrecordDao {
 
     int queryLabeledNum(@Param("labelUser") String labelUser, @Param("imageGroup") String imageGroup);
 
-    JunLabelrecord querybyUserAndImageUl(@Param("labelUser") String labelUser, @Param("imageUrl") Long imageId);
+    JunLabelrecord querybyUserAndImageUl(@Param("labelUser") String labelUser, @Param("imageId") Long imageId);
 }

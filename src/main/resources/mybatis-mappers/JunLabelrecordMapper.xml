@@ -79,7 +79,7 @@
 	<select id="querybyUserAndImageUl" resultType="JunLabelrecord">
 		SELECT * FROM jun_labelrecord t
 		WHERE t.labelUser = #{labelUser}
-		AND t.imageId = imageId
+		AND t.imageId = #{imageId}
 	</select>
 
 </mapper>
