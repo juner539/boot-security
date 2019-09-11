@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+	<style>
+		.layui-form-label{
+			width: 200px;
+			font-size: x-large;
+			font-weight:bold;
+		}
+		.layui-form-radio div{
+			font-size: 23px;
+		}
+		.control-label{
+			width: 70px;
+			font-size: x-large;
+		}
+	</style>
+</head>
+<body>
+<div id="imgDiv"  style="width: 30% ;float:left;">
+	<div style="text-align:center ;font-size: x-large"><b>图片信息</b>&nbsp;&nbsp;&nbsp;</div>
+	<div class="layui-upload-list" id="demo2" style="text-align: center"></div>
+	<!--<span style="font-size: x-large"><b>图片预览</b>&nbsp;&nbsp;&nbsp;<font color="red"><span id="upState"  style="font-size: medium;">未上传</span></font>&nbsp;&nbsp;&nbsp;<button class="layui-btn  " onclick="goupload()">确定上传</button></span>
+	-->
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="width: 70% ;float:right;border:1px solid #ffcc00;background:#fffff7;font-size: x-large">
+	<div style="text-align:center ;font-size: xx-large"><b id="viewTitle">图片标注</b>&nbsp;&nbsp;&nbsp;<span style="text-align: right;font-size: medium;float: right">共 500 条 当前：<span id="currentNum" style="color: red">1</span></span></div>
+	<form class="layui-form" onsubmit="return false" id="form">
+		<input type="hidden" name="id" id="id">
+		<input type="hidden" name="imageUrl" id="imageUrl">
+		<input type="hidden" name="labeledNum" id="labeledNum">
+		<div class="layui-form-item">
+			<label class="layui-form-label">织物种类：</label>
+			<div class="layui-input-block " >
+				<input type="radio" lay-filter="zhongleifilter" name="zhonglei" id="plain" value="plain" title="素色" checked>
+				<input type="radio" lay-filter="zhongleifilter" name="zhonglei" id="stripe" value="stripe" title="条纹" >
+				<input type="radio" lay-filter="zhongleifilter" name="zhonglei" id="lattice" value="lattice" title="格子">
+				<input type="radio" lay-filter="zhongleifilter" name="zhonglei" id="pattern" value="pattern" title="花纹">
+			</div>
+		</div>
+		<br>
+		<div class="layui-collapse" lay-filter="plain" id="plaindiv" style="display: block">
+			<input type="hidden" name="isplain" id="isplain" value="1">
+			<div class="layui-colla-item" >
+				<h1 class="layui-colla-title">素色</h1>
+				<div class="layui-colla-content layui-show">
+					<div class='layui-form-item form-group' id="plaincontent">
+						<label class='col-md-4 layui-form-label'>细纹理：</label>
+						<div class="col-md-8 layui-inline">
+							<select id="fineTexture" name="fineTexture" lay-filter="search_type" lay-verify="required" lay-search>
+								<option value="">请选择</option>
+								<option value="pingwen">平纹</option>
+								<option value="xiewen">斜纹</option>
+								<option value="rongmian">绒面</option>
+							</select>
+						</div>
+						<label class='col-md-4 layui-form-label'>颜色：</label>
+						<div class="col-md-8 layui-inline">
+							<select id="colorType" name="colorType" lay-filter="search_type" lay-verify="required" lay-search>
+								<option value="">请选择</option>
+								<option value="liangse">亮色</option>
+								<option value="anse">暗色</option>
+							</select>
+						</div>
+						<label class='col-md-4 layui-form-label'>备注：</label>
+						<div class="col-md-8 layui-inline">
+							<input class='layui-input' placeholder='添加备注' type='text' name='remarks' id='remarks' >
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="layui-collapse" lay-filter="stripe" id="stripediv" style="display: none">
+			<input type="hidden" name="isstripe" id="isstripe" value="0">
+			<div class="layui-colla-item">
+				<h1 class="layui-colla-title">条纹</h1>
+				<div class="layui-colla-content layui-show">
+					<div class='layui-form-item form-group' id="stripecontent">
+						<label class='col-md-4 layui-form-label'>细纹理：</label>
+						<div class="col-md-8 layui-inline">
+							<select id="fineTexture2" name="fineTexture" lay-filter="search_type" lay-verify="required" lay-search>
+								<option value="">请选择</option>
+								<option value="pingwen">平纹</option>
+								<option value="xiewen">斜纹</option>
+								<option value="rongmian">绒面</option>
+							</select>
+						</div>
+						<label class='col-md-4 layui-form-label'>风格：</label>
+						<div class="col-md-8 layui-inline">
+							<select id="stripeStype" name="stripeStype" lay-filter="search_type" lay-verify="required" lay-search>
+								<option value="">请选择</option>
+								<option value="shangwu">商务</option>
+								<option value="xiuxian">休闲</option>
+							</select>
+						</div>
+						<!--<label class='col-md-4 layui-form-label'>颜色：</label>
+						<div class="col-md-8 layui-inline">
+							<select id="colorType" name="colorType" lay-filter="search_type" lay-verify="required" lay-search>
+								<option value="">请选择</option>
+								<option value="liangse">亮色</option>
+								<option value="anse">暗色</option>
+							</select>
+						</div>-->
+						<label class='col-md-4 layui-form-label'>条纹排列：</label>
+						<div class="col-md-8 layui-inline">
+							<input class='layui-input' placeholder='条纹排列' type='text' name='stripeArrangement' id='stripeArrangement' >
+						</div>
+						<label class='col-md-4 layui-form-label'>备注：</label>
+						<div class="col-md-8 layui-inline">
+							<input class='layui-input' placeholder='添加备注' type='text' name='remarks' id='remarks2' >
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="layui-collapse" lay-filter="lattice" id="latticediv" style="display: none">
+			<input type="hidden" name="islattice" id="islattice" value="0">
+			<div class="layui-colla-item">
+				<h1 class="layui-colla-title">格子</h1>
+				<div class="layui-colla-content layui-show">
+					<div class='layui-form-item form-group' id="latticecontent">
+						<label class='col-md-4 layui-form-label'>细纹理：</label>
+						<div class="col-md-8 layui-inline">
+							<select id="fineTexture3" name="fineTexture" lay-filter="search_type" lay-verify="required" lay-search>
+								<option value="">请选择</option>
+								<option value="pingwen">平纹</option>
+								<option value="xiewen">斜纹</option>
+								<option value="rongmian">绒面</option>
+							</select>
+						</div>
+						<label class='col-md-4 layui-form-label'>风格：</label>
+						<div class="col-md-8 layui-inline">
+							<select id="stripeStype3" name="fabricStyle" lay-filter="search_type" lay-verify="required" lay-search>
+								<option value="">请选择</option>
+								<option value="shangwu">商务</option>
+								<option value="xiuxian">休闲</option>
+							</select>
+						</div>
+						<!--<label class='col-md-4 layui-form-label'>颜色：</label>
+						<div class="col-md-8 layui-inline">
+							<select id="colorType" name="colorType" lay-filter="search_type" lay-verify="required" lay-search>
+								<option value="">请选择</option>
+								<option value="liangse">亮色</option>
+								<option value="anse">暗色</option>
+							</select>
+						</div>-->
+						<label class='col-md-4 layui-form-label'>经纱排列：</label>
+						<div class="col-md-8 layui-inline">
+							<input class='layui-input' placeholder='经纱条纹排列' type='text' name='stripeArrangement' id='warpArrangement' >
+						</div>
+						<label class='col-md-4 layui-form-label'>纬纱排列：</label>
+						<div class="col-md-8 layui-inline">
+							<input class='layui-input' placeholder='纬纱条纹排列' type='text' name='stripeArrangement' id='weftArrangement' >
+						</div>
+						<label class='col-md-4 layui-form-label'>备注：</label>
+						<div class="col-md-8 layui-inline">
+							<input class='layui-input' placeholder='添加备注' type='text' name='remarks' id='remarks3' >
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="layui-collapse" lay-filter="pattern" id="patterndiv" style="display: none">
+			<input type="hidden" name="ispattern" id="ispattern" value="0">
+			<div class="layui-colla-item">
+				<h1 class="layui-colla-title">花纹</h1>
+				<div class="layui-colla-content layui-show">
+					<div class='layui-form-item form-group' id="patterncontent">
+						<label class='col-md-4 layui-form-label'>细纹理：</label>
+						<div class="col-md-8 layui-inline">
+							<select id="fineTexture4" name="fineTexture" lay-filter="search_type" lay-verify="required" lay-search>
+								<option value="">请选择</option>
+								<option value="pingwen">平纹</option>
+								<option value="xiewen">斜纹</option>
+								<option value="rongmian">绒面</option>
+							</select>
+						</div>
+						<label class='col-md-4 layui-form-label'>风格：</label>
+						<div class="col-md-8 layui-inline">
+							<select id="stripeStype4" name="fabricStyle" lay-filter="search_type" lay-verify="required" lay-search>
+								<option value="">请选择</option>
+								<option value="shangwu">商务</option>
+								<option value="xiuxian">休闲</option>
+							</select>
+						</div>
+						<label class='col-md-4 layui-form-label'>成形工艺：</label>
+						<div class="col-md-8 layui-inline">
+							<select id="formProcess" name="formProcess" lay-filter="search_type" lay-verify="required" lay-search>
+								<option value="">请选择</option>
+								<option value="yinhua">印花</option>
+								<option value="tihua">提花</option>
+							</select>
+						</div>
+						<label class='col-md-4 layui-form-label'>备注：</label>
+						<div class="col-md-8 layui-inline">
+							<input class='layui-input' placeholder='添加备注' type='text' name='remarks' id='remarks4' >
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="col-md-8 layui-input-block " style="text-align: center">
+			<button class="btn btn-danger" onclick="goBack()">上一条</button>
+			&nbsp;&nbsp;&nbsp;
+			<!--<button id="savebtn" class="btn btn-primary" type="submit" onclick="add()">
+				<i class="fa fa-save"></i> 保存
+			</button>-->
+			&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-danger" onclick="goNext()">下一条</button>
+		</div>
+
+	</form>
+</div>
+	<script type="text/javascript" src="../../js/libs/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="../../js/jq.js"></script>
+	<script type="text/javascript" src="../../js/plugin/bootstrapvalidator/bootstrapValidator.min.js"></script>
+	<script type="text/javascript" src="../../js/common.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript">
+		layui.use(['layer','form'], function(){
+		    var layer = layui.layer;
+            var form = layui.form;
+            form.render();
+            form.on('radio(zhongleifilter)', function(data){
+                var type=data.value;
+                var types=["pattern","plain","stripe","lattice"];
+                for (var i=0;i<=types.length;i++){
+                    if (type==types[i]){
+                        $("#"+types[i]+"div").css("display","block");
+                        $("#is"+types[i]).val("1");
+                    }else {
+                        $("#"+types[i]+"div").css("display","none");
+                        $("#is"+types[i]).val("0");
+                    }
+                }
+            });
+		});
+		
+		function goNext() {
+		    var formdata = $("#form").serializeObject();
+		    var labeledNum = $("#labeledNum").val();
+            if (labeledNum!=null){
+                labeledNum=parseInt(labeledNum)+1>500?500:parseInt(labeledNum)+1;
+            }else{
+                labeledNum=1;
+            }
+		    var taskId = $("#taskId").val();
+			$.ajax({
+				type : 'post',
+				url : '/junLatticefabrics',	 	// TODO 保存当前记录
+				contentType: "application/json; charset=utf-8",  
+				data : JSON.stringify(formdata),
+				success : function(data) {
+					layer.msg("保存成功", {shift: -1, time: 1000}, function(){
+                        window.location.href = "pages/labelimg/mainLabel.html?taskId="+taskId+"&labeledNum="+labeledNum;
+                    });
+				}
+			});
+		}
+        //获取url后的参数值
+        function getUrlParam(key) {
+            var href = window.location.href;
+            var url = href.split("?");
+            if(url.length <= 1){
+                return "";
+            }
+            var params = url[1].split("&");
+
+            for(var i=0; i<params.length; i++){
+                var param = params[i].split("=");
+                if(key == param[0]){
+                    return param[1];
+                }
+            }
+        }
+		function initData() {
+		    $(".layui-form-radio div").css("font-size","x-large");
+		    $(".layui-colla-title").css("font-size","x-large");
+		    $(".layui-colla-title").css("font-weight","bold");
+            var taskId = getUrlParam("taskId");	//
+			if(taskId!=""){
+			    console.log(taskId);
+                var labeledNum = getUrlParam("labeledNum");	//
+                $("#labeledNum").val(labeledNum);
+                $("#currentNum").html(labeledNum);
+			    /////// 测试用 后面删除
+                var url="/statics/34573E.R-3.jpg";
+                var imgpath = ""+url+"?token="+localStorage.getItem("token");
+                $('#demo2').append($("<img id='showImg1'  style='width: 90%;border-style:dashed;border-color:#FF9900;border-width:1px;' title='附件' alt='附件格式不支持预览'></img>").attr("src",imgpath))
+                ///////! 测试用 后面删除
+
+				//加载数据 获取用户标记到的位置
+                $.ajax({
+                    type : 'get',
+                    url : '/junTaskinfos/'+taskId+'/'+labeledNum,		//TODO 根据任务ID 获取图片路径
+                    async : false,
+                    success : function(data) {
+                        var url=data.url;
+                        var imgpath = ""+url+"?token="+localStorage.getItem("token");
+                        imgpath = imgpath.substr(18,imgpath.length)
+                        imgpath ='/statics/'+imgpath;
+                        if(url.endsWith('.jpg') || url.endsWith('.bmp') || url.endsWith('.png') || url.endsWith('.gif')){
+                            $('#demo2').append($("<img id='showImg1'  style='width: 80%;border-style:dashed;border-color:#FF9900;border-width:1px;' title='附件' alt='附件格式不支持预览'></img>").attr("src",imgpath))
+                        }
+                    }
+                });
+
+			}
+        }
+
+
+
+        initData();
+	</script>
+</body>
+</html>

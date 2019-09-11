@@ -42,8 +42,9 @@
                                 </tr>                       
                                 <tr>
 									<th>id</th>
-									<th>imageGroup</th>
-									<th>labelUser</th>
+									<th>任务分组</th>
+									<th>标记用户</th>
+									<th>标记数量</th>
 									<th>操作</th>
                                 </tr>
                             </thead>
@@ -66,10 +67,10 @@
 <script type="text/javascript" src="../../js/my/permission.js"></script>
 <script type="text/javascript">
 var pers = checkPermission();
-
+var roleID = getRoleId();
 var example;
 function init(){
-	example = 
+	example =
     	$('#dt-table').DataTable({
         	"searching": false,
         	"processing": false,
@@ -81,24 +82,36 @@ function init(){
     				d.id = $("#id").val();
     			}
         	},
-        	"dom": "<'dt-toolbar'r>t<'dt-toolbar-footer'<'col-sm-10 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-10' p v>>",	
+        	"dom": "<'dt-toolbar'r>t<'dt-toolbar-footer'<'col-sm-10 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-10' p v>>",
             "columns": [
 				{"data" : "id", "defaultContent" : ""},
 				{"data" : "imageGroup", "defaultContent" : ""},
 				{"data" : "labelUser", "defaultContent" : ""},
-				{ 
-								"data": "", 
+				{"data" : "labeledNum", "defaultContent" : ""},
+				{
+								"data": "",
 								"defaultContent": "",
 								"orderable":false,
 						        "render": function (data, type, row) {
                 		           var id = row['id'];
+                		           var labeledNum = row['labeledNum'];
                 		           var href = "updateJunTaskinfo.html?id=" + id;
-                                   var edit = buttonEdit(href, "", pers);
-                		           var del = buttonDel(id, "", pers);
-                                   return edit + del;
-                  	            }		
+                                    var edit = "";
+                                    var del = "";
+                		           if(roleID=="1"){
+                                       var edit = buttonEdit(href, "", pers);
+                                       var del = buttonDel(id, "", pers);
+                                   }
+                		           if (labeledNum!=null){
+                                       labeledNum=parseInt(labeledNum)+1>500?500:parseInt(labeledNum)+1;
+                                   }else{
+                                       labeledNum=1;
+                                   }
+                		           var labelImg = buttonIabelImg(id,labeledNum);
+                                   return edit + del + labelImg;
+                  	            }
 							},
-                
+
             ],
            "order": [[ 0, "asc" ]]
         } );
@@ -120,7 +133,7 @@ function del(id){
                 layer.msg("删除成功");
             }
         });
-        
+
         layer.close(1);
     });
 }
@@ -128,6 +141,43 @@ function del(id){
 $("#searchBt").click(function(){
 	example.ajax.reload();
 });
+//获取用户角色id
+function getRoleId(){
+    var roleId = 1  // 默认业务员
+    $.ajax({
+        url : '/users/currentRoleId',
+        type : 'get',
+        async: false,//同步
+        success : function(data) {
+            roleId = data;
+        },
+        error : function(data) {
 
+        }
+    });
+    return roleId;
+}
+
+
+// 获取用户已经标记的位置
+function buttonIabelImg(taskId,labeledNum) {
+    var btn = $("<button class='layui-btn layui-btn-xs layui-btn-normal' title='图片标注' onclick='doLabel(\"" + taskId +"\",\""+labeledNum+"\")'><i class='layui-icon'>&#xe6c6;</i></button>");
+    return btn.prop("outerHTML");
+}
+function doLabel(taskId,labeledNum) {
+    var href="pages/labelimg/mainLabel.html?taskId="+taskId+"&labeledNum="+labeledNum;
+    var abb=$(parent.document).find("#menu a[data-url='pages/labelimg/mainLabel.html']");
+    var tabs = $(parent.document).find("ul.layui-tab-title").children();
+    var lay_id = abb.attr("lay-id");
+    abb.attr("data-url", href);
+    for(var i = 0; i < tabs.length; i++) {
+        if($(tabs).eq(i).attr("lay-id") == lay_id) {
+            parent.active.tabDelete(lay_id);
+        }
+    }
+    $("#menu a[data-url=\'"+href+"\']" , parent.document)[0].click();
+    location.reload();
+    abb.attr("data-url", "pages/labelimg/mainLabel.html");
+}
 init();
 </script>
