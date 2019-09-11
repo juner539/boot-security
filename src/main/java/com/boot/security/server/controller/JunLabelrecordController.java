@@ -2,22 +2,18 @@ package com.boot.security.server.controller;
 
 import java.util.List;
 
+import com.boot.security.server.dao.*;
+import com.boot.security.server.model.JunAllfabric;
+import com.boot.security.server.model.JunPlainfabric;
+import com.boot.security.server.model.JunStripefabric;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.boot.security.server.page.table.PageTableRequest;
 import com.boot.security.server.page.table.PageTableHandler;
 import com.boot.security.server.page.table.PageTableResponse;
 import com.boot.security.server.page.table.PageTableHandler.CountHandler;
 import com.boot.security.server.page.table.PageTableHandler.ListHandler;
-import com.boot.security.server.dao.JunLabelrecordDao;
 import com.boot.security.server.model.JunLabelrecord;
 
 import io.swagger.annotations.ApiOperation;
@@ -28,6 +24,14 @@ public class JunLabelrecordController {
 
     @Autowired
     private JunLabelrecordDao junLabelrecordDao;
+    @Autowired
+    private JunPlainfabricDao junPlainfabricDao;
+    @Autowired
+    private JunStripefabricDao junStripefabricDao;
+    @Autowired
+    private JunLatticefabricDao junLatticefabricDao;
+    @Autowired
+    private JunPatternfabricDao junPatternfabricDao;
 
     @PostMapping
     @ApiOperation(value = "保存")
@@ -73,6 +77,32 @@ public class JunLabelrecordController {
     @ApiOperation(value = "删除")
     public void delete(@PathVariable Long id) {
         junLabelrecordDao.delete(id);
+    }
+
+    @RequestMapping(value = "/nextImage", method = RequestMethod.GET)
+    @ApiOperation(value = "保存当前记录及传递下一图像")
+    public String nextImageprocess(@RequestBody JunAllfabric junAllfabric){
+        if (junAllfabric.getImageType().equals("素色")){
+            JunPlainfabric junPlainfabric = new JunPlainfabric();
+            junPlainfabric.setColorType(junAllfabric.getColorType());
+            junPlainfabric.setFineTexture(junAllfabric.getFineTexture());
+            junPlainfabric.setImageType(junAllfabric.getImageType());
+            junPlainfabric.setImageUrl(junAllfabric.getImageUrl());
+            junPlainfabric.setRemarks(junAllfabric.getRemarks());
+            junPlainfabricDao.save(junPlainfabric);
+
+        }
+        if (junAllfabric.getImageType().equals("条纹")){
+
+        }
+        if (junAllfabric.getImageType().equals("格子")){
+
+        }
+        if (junAllfabric.getImageType().equals("花纹")){
+
+        }
+
+        return null;
     }
 
 }

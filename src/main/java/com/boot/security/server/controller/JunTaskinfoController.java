@@ -107,4 +107,6 @@ public class JunTaskinfoController {
         return datalists.get(labeledNum).getImageUrl();
     }
 
+
+
 }
