@@ -79,12 +79,19 @@ public class JunLabelrecordController {
         junLabelrecordDao.delete(id);
     }
 
+
+
+
+
     @RequestMapping(value = "/nextImage", method = RequestMethod.POST)
     @ApiOperation(value = "保存当前记录及传递下一图像")
-    public String nextImageprocess(@RequestBody JunAllfabric junAllfabric){
+    public JunAllfabric nextImageprocess(@RequestBody JunAllfabric junAllfabric){
+
         String curUserName = UserUtil.getLoginUser().getUsername();
         long imageId = junDatalistDao.queryImageIdByImageUrl(junAllfabric.getImageUrl());
-        JunLabelrecord junLabelrecord = junLabelrecordDao.querybyUserAndImageUl(curUserName,imageId);
+        JunLabelrecord junLabelrecord = junLabelrecordDao.querybyUserAndImageUl(curUserName, imageId);
+        int labelNum = junLabelrecordDao.queryLabeledNum(curUserName, junDatalistDao.queryImageGroupByImageUrl(junAllfabric.getImageUrl()));
+        List<JunDatalist> junDatalists = junDatalistDao.listByImageGroup(junDatalistDao.getById(imageId).getImageGroup());
         long labelId = 0;
         // 查询不到标注记录 新增记录
         if (junLabelrecord == null) {
@@ -138,11 +145,11 @@ public class JunLabelrecordController {
             junLabelrecord1.setLabelId(labelId);
             junLabelrecord1.setLabelUser(curUserName);
             junLabelrecordDao.save(junLabelrecord1);
-        }else{
+        } else {
             // 查询到数据说明已经标注 更新数据
-            if (junLabelrecord.getImageType().equals(junAllfabric.getImageType())){
+            if (junLabelrecord.getImageType().equals(junAllfabric.getImageType())) {
                 // 如果类别相等 更新记录中对用原有标签
-                if (junLabelrecord.getImageType().equals("plain")){
+                if (junLabelrecord.getImageType().equals("plain")) {
                     JunPlainfabric junPlainfabric = junPlainfabricDao.getById(junLabelrecord.getLabelId());
                     junPlainfabric.setRemarks(junAllfabric.getRemarks());
                     junPlainfabric.setImageUrl(junAllfabric.getImageUrl());
@@ -150,7 +157,7 @@ public class JunLabelrecordController {
                     junPlainfabric.setColorType(junAllfabric.getColorType());
                     junPlainfabricDao.update(junPlainfabric);
                 }
-                if (junLabelrecord.getImageType().equals("stripe")){
+                if (junLabelrecord.getImageType().equals("stripe")) {
                     JunStripefabric junStripefabric = junStripefabricDao.getById(junLabelrecord.getLabelId());
                     junStripefabric.setStripeStype(junAllfabric.getStripeStype());
                     junStripefabric.setStripeArrangement(junAllfabric.getStripeArrangement());
@@ -158,7 +165,7 @@ public class JunLabelrecordController {
                     junStripefabric.setFineTexture(junAllfabric.getFineTexture());
                     junStripefabricDao.update(junStripefabric);
                 }
-                if (junLabelrecord.getImageType().equals("pattern")){
+                if (junLabelrecord.getImageType().equals("pattern")) {
                     JunPatternfabric junPatternfabric = junPatternfabricDao.getById(junLabelrecord.getLabelId());
                     junPatternfabric.setRemarks(junAllfabric.getRemarks());
                     junPatternfabric.setFormProcess(junAllfabric.getFormProcess());
@@ -166,7 +173,7 @@ public class JunLabelrecordController {
                     junPatternfabric.setFabricStyle(junAllfabric.getFabricStyle());
                     junPatternfabricDao.update(junPatternfabric);
                 }
-                if (junLabelrecord.getImageType().equals("lattice")){
+                if (junLabelrecord.getImageType().equals("lattice")) {
                     JunLatticefabric junLatticefabric = junLatticefabricDao.getById(junLabelrecord.getLabelId());
                     junLatticefabric.setRemarks(junAllfabric.getRemarks());
                     junLatticefabric.setWeftArrangement(junAllfabric.getWeftArrangement());
@@ -175,18 +182,18 @@ public class JunLabelrecordController {
                     junLatticefabric.setFabricStyle(junAllfabric.getFabricStyle());
                     junLatticefabricDao.update(junLatticefabric);
                 }
-            }else{
+            } else {
                 // 如果类别不等 首先删除原来标签
-                if (junLabelrecord.getImageType().equals("plain")){
+                if (junLabelrecord.getImageType().equals("plain")) {
                     junPlainfabricDao.delete(junLabelrecord.getLabelId());
                 }
-                if (junLabelrecord.getImageType().equals("stripe")){
+                if (junLabelrecord.getImageType().equals("stripe")) {
                     junStripefabricDao.delete(junLabelrecord.getLabelId());
                 }
-                if (junLabelrecord.getImageType().equals("pattern")){
+                if (junLabelrecord.getImageType().equals("pattern")) {
                     junPatternfabricDao.delete(junLabelrecord.getLabelId());
                 }
-                if (junLabelrecord.getImageType().equals("lattice")){
+                if (junLabelrecord.getImageType().equals("lattice")) {
                     junLatticefabricDao.delete(junLabelrecord.getLabelId());
                 }
                 // 再增加一个新的标签
@@ -241,8 +248,61 @@ public class JunLabelrecordController {
 
             junLabelrecordDao.update(junLabelrecord);
         }
-        List<JunDatalist> junDatalists =  junDatalistDao.listByImageGroup(junDatalistDao.getById(imageId).getImageGroup());
-        return junDatalists.get(junAllfabric.getLabeledNum()+1).getImageUrl();
+
+        JunAllfabric result = new JunAllfabric();
+        if (junAllfabric.getIsPreviousOrNext() == 1) {
+            labelNum = labelNum + 1;
+        }
+        if (junAllfabric.getIsPreviousOrNext() == 0){
+            labelNum = labelNum - 1;
+        }
+        // 查询返回张图片
+        long shouImageId = junDatalists.get(labelNum).getId();
+        JunLabelrecord junResRecord = junLabelrecordDao.querybyUserAndImageUl(curUserName,shouImageId);
+        if (junResRecord != null){
+            result.setImageUrl(junDatalists.get(labelNum).getImageUrl());
+            result.setImageType(junResRecord.getImageType());
+            result.setLabeledNum(labelNum);
+            if (junResRecord.getImageType().equals("plain")){
+                JunPlainfabric junPF = junPlainfabricDao.getById(junResRecord.getLabelId());
+                result.setImageType(junPF.getImageType());
+                result.setColorType(junPF.getColorType());
+                result.setFineTexture(junPF.getFineTexture());
+                result.setRemarks(junPF.getRemarks());
+                result.setIsplain(1);
+            }
+            if (junResRecord.getImageType().equals("stripe")){
+                JunStripefabric junSF = junStripefabricDao.getById(junResRecord.getLabelId());
+                result.setRemarks(junSF.getRemarks());
+                result.setFineTexture(junSF.getFineTexture());
+                result.setStripeStype(junSF.getStripeStype());
+                result.setStripeArrangement(junSF.getStripeArrangement());
+                result.setIsstripe(1);
+            }
+            if (junResRecord.getImageType().equals("lattice")){
+                JunLatticefabric junLF = junLatticefabricDao.getById(junResRecord.getLabelId());
+                result.setIslattice(1);
+                result.setWarpArrangement(junLF.getWarpArrangement());
+                result.setWeftArrangement(junLF.getWeftArrangement());
+                result.setFabricStyle(junLF.getFabricStyle());
+                result.setFineTexture(junLF.getFineTexture());
+                result.setRemarks(junLF.getRemarks());
+            }
+            if (junResRecord.getImageType().equals("pattern")){
+                JunPatternfabric junPF = junPatternfabricDao.getById(junResRecord.getLabelId());
+                result.setRemarks(junPF.getRemarks());
+                result.setFineTexture(junPF.getFineTexture());
+                result.setFabricStyle(junPF.getFabricStyle());
+                result.setFormProcess(junPF.getFormProcess());
+                result.setIspattern(1);
+            }
+        }
+        if (junResRecord == null){
+            result.setLabeledNum(labelNum);
+            result.setImageUrl(junDatalists.get(labelNum).getImageUrl());
+
+        }
+        return result;
     }
 
 
