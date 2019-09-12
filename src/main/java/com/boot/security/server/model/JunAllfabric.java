@@ -2,6 +2,7 @@ package com.boot.security.server.model;
 
 public class JunAllfabric extends BaseEntity<Long> {
 
+	private int isPreviousOrNext;
 	private int ispattern;
 	private Long id;
 	private int isplain;
@@ -19,6 +20,15 @@ public class JunAllfabric extends BaseEntity<Long> {
 	private String remarks;
 	private String formProcess;
 	private String colorType;
+
+
+	public int getIsPreviousOrNext() {
+		return isPreviousOrNext;
+	}
+
+	public void setIsPreviousOrNext(int isPreviousOrNext) {
+		this.isPreviousOrNext = isPreviousOrNext;
+	}
 
 	public int getIspattern() {
 		return ispattern;

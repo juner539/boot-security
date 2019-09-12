@@ -40,5 +40,8 @@ public interface JunDatalistDao {
     @Select("SELECT t.id FROM jun_datalist t WHERE t.imageUrl = #{imageUrl}")
     Long queryImageIdByImageUrl(String imageUrl);
 
+    @Select("SELECT t.imageGroup FROM jun_datalist t WHERE t.imageUrl = #{imageUrl}")
+    String queryImageGroupByImageUrl(String imageUrl);
+
 
 }
