@@ -340,7 +340,7 @@
 				//加载数据 获取用户标记到的位置
                 $.ajax({
                     type : 'get',
-                    url : '/junTaskinfos/getCurTaskOption/'+taskId+'/'+labeledNum,		//TODO 根据任务ID 获取图片路径
+                    url : '/junTaskinfos/getCurTaskOption/'+taskId,		//TODO 根据任务ID 获取图片路径
                     async : false,
                     success : function(data) {
                     	//console.log(data);
