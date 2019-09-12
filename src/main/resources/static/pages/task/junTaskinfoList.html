@@ -103,7 +103,7 @@ function init(){
                                        var del = buttonDel(id, "", pers);
                                    }
                 		           if (labeledNum!=null){
-                                       labeledNum=parseInt(labeledNum)+1>500?500:parseInt(labeledNum)+1;
+                                       labeledNum=parseInt(labeledNum)>500?500:parseInt(labeledNum);
                                    }else{
                                        labeledNum=1;
                                    }
