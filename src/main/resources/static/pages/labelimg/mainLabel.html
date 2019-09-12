@@ -51,7 +51,7 @@
 					<div class='layui-form-item form-group' id="plaincontent">
 						<label class='col-md-4 layui-form-label'>细纹理：</label>
 						<div class="col-md-8 layui-inline">
-							<select id="fineTexture" name="fineTexture" lay-filter="search_type" lay-verify="required" lay-search>
+							<select id="fineTexture0" name="fineTexture" lay-filter="search_type" lay-verify="required" lay-search>
 								<option value="">请选择</option>
 								<option value="pingwen">平纹</option>
 								<option value="xiewen">斜纹</option>
@@ -68,7 +68,8 @@
 						</div>
 						<label class='col-md-4 layui-form-label'>备注：</label>
 						<div class="col-md-8 layui-inline">
-							<input class='layui-input' placeholder='添加备注' type='text' name='remarks' id='remarks' >
+							<input class='layui-input' placeholder='添加备注' type='text' name='remarks' id='remarks0' >
+							<input type='hidden' name='fabricStyle' id='fabricStyle0' >
 						</div>
 					</div>
 				</div>
@@ -82,7 +83,7 @@
 					<div class='layui-form-item form-group' id="stripecontent">
 						<label class='col-md-4 layui-form-label'>细纹理：</label>
 						<div class="col-md-8 layui-inline">
-							<select id="fineTexture2" name="fineTexture" lay-filter="search_type" lay-verify="required" lay-search>
+							<select id="fineTexture1" name="fineTexture" lay-filter="search_type" lay-verify="required" lay-search>
 								<option value="">请选择</option>
 								<option value="pingwen">平纹</option>
 								<option value="xiewen">斜纹</option>
@@ -111,7 +112,8 @@
 						</div>
 						<label class='col-md-4 layui-form-label'>备注：</label>
 						<div class="col-md-8 layui-inline">
-							<input class='layui-input' placeholder='添加备注' type='text' name='remarks' id='remarks2' >
+							<input class='layui-input' placeholder='添加备注' type='text' name='remarks' id='remarks1' >
+							<input type='hidden' name='fabricStyle' id='fabricStyle1' >
 						</div>
 					</div>
 				</div>
@@ -125,7 +127,7 @@
 					<div class='layui-form-item form-group' id="latticecontent">
 						<label class='col-md-4 layui-form-label'>细纹理：</label>
 						<div class="col-md-8 layui-inline">
-							<select id="fineTexture3" name="fineTexture" lay-filter="search_type" lay-verify="required" lay-search>
+							<select id="fineTexture2" name="fineTexture" lay-filter="search_type" lay-verify="required" lay-search>
 								<option value="">请选择</option>
 								<option value="pingwen">平纹</option>
 								<option value="xiewen">斜纹</option>
@@ -134,7 +136,7 @@
 						</div>
 						<label class='col-md-4 layui-form-label'>风格：</label>
 						<div class="col-md-8 layui-inline">
-							<select id="stripeStype3" name="fabricStyle" lay-filter="search_type" lay-verify="required" lay-search>
+							<select id="fabricStyle2" name="fabricStyle" lay-filter="search_type" lay-verify="required" lay-search>
 								<option value="">请选择</option>
 								<option value="shangwu">商务</option>
 								<option value="xiuxian">休闲</option>
@@ -158,7 +160,7 @@
 						</div>
 						<label class='col-md-4 layui-form-label'>备注：</label>
 						<div class="col-md-8 layui-inline">
-							<input class='layui-input' placeholder='添加备注' type='text' name='remarks' id='remarks3' >
+							<input class='layui-input' placeholder='添加备注' type='text' name='remarks' id='remarks2' >
 						</div>
 					</div>
 				</div>
@@ -172,7 +174,7 @@
 					<div class='layui-form-item form-group' id="patterncontent">
 						<label class='col-md-4 layui-form-label'>细纹理：</label>
 						<div class="col-md-8 layui-inline">
-							<select id="fineTexture4" name="fineTexture" lay-filter="search_type" lay-verify="required" lay-search>
+							<select id="fineTexture3" name="fineTexture" lay-filter="search_type" lay-verify="required" lay-search>
 								<option value="">请选择</option>
 								<option value="pingwen">平纹</option>
 								<option value="xiewen">斜纹</option>
@@ -181,7 +183,7 @@
 						</div>
 						<label class='col-md-4 layui-form-label'>风格：</label>
 						<div class="col-md-8 layui-inline">
-							<select id="stripeStype4" name="fabricStyle" lay-filter="search_type" lay-verify="required" lay-search>
+							<select id="fabricStyle3" name="fabricStyle" lay-filter="search_type" lay-verify="required" lay-search>
 								<option value="">请选择</option>
 								<option value="shangwu">商务</option>
 								<option value="xiuxian">休闲</option>
@@ -197,7 +199,7 @@
 						</div>
 						<label class='col-md-4 layui-form-label'>备注：</label>
 						<div class="col-md-8 layui-inline">
-							<input class='layui-input' placeholder='添加备注' type='text' name='remarks' id='remarks4' >
+							<input class='layui-input' placeholder='添加备注' type='text' name='remarks' id='remarks3' >
 						</div>
 					</div>
 				</div>
@@ -205,13 +207,13 @@
 		</div>
 		<br>
 		<div class="col-md-8 layui-input-block " style="text-align: center">
-			<button class="btn btn-danger" onclick="goBack()">上一条</button>
+			<button class="btn btn-danger" onclick="goImg('0')">上一条</button>
 			&nbsp;&nbsp;&nbsp;
 			<!--<button id="savebtn" class="btn btn-primary" type="submit" onclick="add()">
 				<i class="fa fa-save"></i> 保存
 			</button>-->
 			&nbsp;&nbsp;&nbsp;
-			<button class="btn btn-danger" onclick="goNext()">下一条</button>
+			<button class="btn btn-danger" onclick="goImg('1')">下一条</button>
 		</div>
 
 	</form>
@@ -241,7 +243,7 @@
             });
 		});
 		
-		function goNext() {
+		function goImg(type) {
 		    var formdata = $("#form").serializeObject();
 		    var labeledNum = $("#labeledNum").val();
             if (labeledNum!=null){
@@ -249,38 +251,17 @@
             }else{
                 labeledNum=1;
             }
-		    var taskId = $("#taskId").val();
-            console.log(formdata.fineTexture);
-            var fin = "";
-            for(var s in formdata.fineTexture){
-            	if (s != ""){
-            		fin = s;
-				}
-			}
-            formdata.fineTexture = fin;
-			var re = "";
-			for(var s in formdata.remarks){
-				if (s != ""){
-					re = s;
-				}
-			}
-			formdata.remarks = re;
-			var ar = "";
-			for(var s in formdata.stripeArrangement){
-				if (s != ""){
-					ar = s;
-				}
-			}
-			formdata.stripeArrangement = ar;
-
-			var fs = "";
-			for(var s in formdata.fabricStyle){
-				if (s != ""){
-					fs = s;
-				}
-			}
-			formdata.fabricStyle = fs;
-			if (formdata.stripeArrangement == null){
+		    var imageType = formdata.imageType;
+		    var index=0;
+		    if (imageType=="plain"){index=0}
+		    else if (imageType=="stripe"){index=1}
+		    else if (imageType=="lattice"){index=2}
+		    else if (imageType=="pattern"){index=3}
+            formdata.fineTexture = formdata.fineTexture[index];
+            formdata.remarks = formdata.remarks[index];
+            formdata.fabricStyle = formdata.fabricStyle[index];
+            formdata.isPreviousOrNext = type;
+			/*if (formdata.stripeArrangement == null){
 				formdata.stripeArrangement = "";
 			}
 			if (formdata.weftArrangement == null){
@@ -288,8 +269,8 @@
 			}
 			if (formdata.warpArrangement == null){
 				formdata.warpArrangement = "";
-			}
-            console.log(JSON.stringify(formdata));
+			}*/
+			console.log(JSON.stringify(formdata))
 			$.ajax({
 				type : 'post',
 				url : '/junLabelrecords/nextImage',	 	// TODO 保存当前记录
@@ -297,8 +278,8 @@
 				data : JSON.stringify(formdata),
 				success : function(data) {
 					layer.msg("保存成功", {shift: -1, time: 1000}, function(){
-                        //todo 报404错误
-						window.location.href = "pages/labelimg/mainLabel.html?taskId="+taskId+"&labeledNum="+(labeledNum+1);
+                        $("#menu a[data-url='pages/storderinfo/stOrderinfoList.html']" , parent.document)[0].click();
+                        document.location.reload();
                     });
 				}
 			});
@@ -323,27 +304,84 @@
 		    $(".layui-form-radio div").css("font-size","x-large");
 		    $(".layui-colla-title").css("font-size","x-large");
 		    $(".layui-colla-title").css("font-weight","bold");
-            var taskId = getUrlParam("taskId");	//
+            var formdata = $("#form").serializeObject();
+		    formdata.taskId = getUrlParam("taskId");
+            var imageType = formdata.imageType;
+            var index=0;
+            if (imageType=="plain"){index=0}
+            else if (imageType=="stripe"){index=1}
+            else if (imageType=="lattice"){index=2}
+            else if (imageType=="pattern"){index=3}
+            formdata.fineTexture = formdata.fineTexture[index];
+            formdata.remarks = formdata.remarks[index];
+            formdata.fabricStyle = formdata.fabricStyle[index];
+            formdata.isPreviousOrNext = '1';
+            console.log(JSON.stringify(formdata))
+            $.ajax({
+                type : 'post',
+                url : '/junLabelrecords/nextImage',		//TODO 根据任务ID 获取图片路径
+                async : false,
+                contentType: "application/json; charset=utf-8",
+                data : JSON.stringify(formdata),
+                success : function(data) {
+                    console.log(data);
+                    var url = data.imageUrl;
+                    if (data.id!=""){
+                        $('#id').val(data.id);
+                        $('#isplain').val(data.isplain);
+                        $('#ispattern').val(data.ispattern);
+                        $('#isstripe').val(data.isstripe);
+                        $('#islattice').val(data.islattice);
+                        $('#labeledNum').val(data.labeledNum);
+                        $('#stripeStype').val(data.stripeStype);
+                        $('#imageUrl').val(data.imageUrl);
+                        $('#imageType').val(data.imageType);
+                        $('#warpArrangement').val(data.warpArrangement);
+                        $('#weftArrangement').val(data.weftArrangement);
+                        $('#stripeArrangement').val(data.stripeArrangement);
+                        $('#formProcess').val(data.formProcess);
+                        $('#colorType').val(data.colorType);
+                        $('#fabricStyle').val(data.fabricStyle);
+                        $('#remarks').val(data.remarks);
+                        $('#fineTexture').val(data.fineTexture);
+                        var imageType = data.imageType;
+                        var index=0;
+                        if (imageType=="plain"){index=0}
+                        else if (imageType=="stripe"){index=1}
+                        else if (imageType=="lattice"){index=2}
+                        else if (imageType=="pattern"){index=3}
+                        $('#remarks'+index).val(data.remarks);
+                        $('#fineTexture'+index).val(data.fineTexture);
+                        $('#fabricStyle'+index).val(data.fabricStyle);
+					}
+                    var imgpath = ""+url+"?token="+localStorage.getItem("token");
+                    imgpath = imgpath.substr(18,imgpath.length)
+                    imgpath ='/statics/'+imgpath;
+                    $('#imageUrl').val(data);
+                    if(url.endsWith('.jpg') || url.endsWith('.bmp') || url.endsWith('.png') || url.endsWith('.gif')){
+                        $('#demo2').append($("<img id='showImg1'  style='width: 80%;border-style:dashed;border-color:#FF9900;border-width:1px;' title='附件' alt='附件格式不支持预览'></img>").attr("src",imgpath))
+                    }
+                }
+            });
+            /*var taskId = getUrlParam("taskId");	//
 			$("#taskId").val(taskId);
 			if(taskId!=""){
 			    //console.log(taskId);
                 var labeledNum = getUrlParam("labeledNum");	//
                 $("#labeledNum").val(labeledNum);
                 $("#currentNum").html(labeledNum);
-
 			    /////// 测试用 后面删除
                 var url="/statics/34573E.R-3.jpg";
                 var imgpath = ""+url+"?token="+localStorage.getItem("token");
                 $('#demo2').append($("<img id='showImg1'  style='width: 90%;border-style:dashed;border-color:#FF9900;border-width:1px;' title='附件' alt='附件格式不支持预览'></img>").attr("src",imgpath))
                 ///////! 测试用 后面删除
-
 				//加载数据 获取用户标记到的位置
                 $.ajax({
                     type : 'get',
                     url : '/junTaskinfos/getCurTaskOption/'+taskId,		//TODO 根据任务ID 获取图片路径
                     async : false,
                     success : function(data) {
-                    	//console.log(data);
+                    	console.log(data);
                         var url=data;
                         var imgpath = ""+url+"?token="+localStorage.getItem("token");
                         imgpath = imgpath.substr(18,imgpath.length)
@@ -355,11 +393,8 @@
                     }
                 });
 
-			}
+			}*/
         }
-
-
-
         initData();
 	</script>
 </body>

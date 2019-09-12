@@ -6,6 +6,7 @@ public class JunAllfabric extends BaseEntity<Long> {
 	private int ispattern;
 	private Long id;
 	private int isplain;
+	private Long taskId;
 	private int labeledNum;
 	private int isstripe;
 	private String stripeStype;
@@ -21,6 +22,13 @@ public class JunAllfabric extends BaseEntity<Long> {
 	private String formProcess;
 	private String colorType;
 
+	public Long getTaskId() {
+		return taskId;
+	}
+
+	public void setTaskId(Long taskId) {
+		this.taskId = taskId;
+	}
 
 	public int getIsPreviousOrNext() {
 		return isPreviousOrNext;
