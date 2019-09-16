@@ -17,16 +17,29 @@
 			width: 70px;
 			font-size: x-large;
 		}
+		body{ margin:0; padding:0;}
+		#x_div, #y_div { position:absolute; top:0;left:0; background-color:#ddd; height:1px; }
+		#y_div { width:1px; }
+		#Mouse{ position:absolute; display:none;color:#ddd;}
+		#Mouse strong{ color:#f00;}
 	</style>
 </head>
 <body>
-<div id="imgDiv"  style="width: 30% ;float:left;">
-	<div style="text-align:center ;font-size: x-large"><b>图片信息</b>&nbsp;&nbsp;&nbsp;</div>
-	<div class="layui-upload-list" id="demo2" style="text-align: center"></div>
+
+<div   id="imgDiv"  style="width: 30% ;float:left;text-align: center">
+		<div style="text-align:center ;font-size: x-large"><b>图片信息</b>&nbsp;&nbsp;&nbsp;</div>
+
+		<div  onclick="mouseClickss()"   id="demo2" style="text-align: center;width: 400px;height: 650px;margin-right: auto;margin-left: auto;" >
+			<div id="Mouse">X轴:<strong id="XXX"></strong> & Y轴:<strong id="YYY"></strong></div>
+			<div id="x_div"></div>
+			<div id="y_div"></div>
+			<div id="showdiv" onmousemove="mouseMove()" ></div>
+		</div>
 	<!--<span style="font-size: x-large"><b>图片预览</b>&nbsp;&nbsp;&nbsp;<font color="red"><span id="upState"  style="font-size: medium;">未上传</span></font>&nbsp;&nbsp;&nbsp;<button class="layui-btn  " onclick="goupload()">确定上传</button></span>
 	-->
 </div>
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="width: 70% ;float:right;border:1px solid #ffcc00;background:#fffff7;font-size: x-large">
+
+<div  class="col-xs-12 col-sm-12 col-md-12 col-lg-12"   style="width: 70% ;float:right;border:1px solid #ffcc00;background:#fffff7;font-size: x-large">
 	<div style="text-align:center ;font-size: xx-large"><b id="viewTitle">图片标注</b>&nbsp;&nbsp;&nbsp;<span style="text-align: right;font-size: medium;float: right">共 500 条 当前：<span id="currentNum" style="color: red">1</span></span></div>
 	<form class="layui-form" onsubmit="return false" id="form">
 		<input type="hidden" name="id" id="id">
@@ -36,20 +49,21 @@
 		<div class="layui-form-item">
 			<label class="layui-form-label">织物种类：</label>
 			<div class="layui-input-block " >
-				<input type="radio" lay-filter="zhongleifilter" name="imageType" id="plain" value="plain" title="素色" checked>
+				<input type="radio" lay-filter="zhongleifilter" name="imageType" id="isChecked" value="0" title="未选择" checked>
+				<input type="radio" lay-filter="zhongleifilter" name="imageType" id="plain" value="plain" title="素色">
 				<input type="radio" lay-filter="zhongleifilter" name="imageType" id="stripe" value="stripe" title="条纹" >
 				<input type="radio" lay-filter="zhongleifilter" name="imageType" id="lattice" value="lattice" title="格子">
 				<input type="radio" lay-filter="zhongleifilter" name="imageType" id="pattern" value="pattern" title="花纹">
 			</div>
 		</div>
 		<br>
-		<div class="layui-collapse" lay-filter="plain" id="plaindiv" style="display: block">
+		<div class="layui-collapse" lay-filter="plain" id="plaindiv" style="display: none">
 			<input type="hidden" name="isplain" id="isplain" value="1">
 			<div class="layui-colla-item" >
 				<h1 class="layui-colla-title">素色</h1>
 				<div class="layui-colla-content layui-show">
 					<div class='layui-form-item form-group' id="plaincontent">
-						<label class='col-md-4 layui-form-label'>细纹理：</label>
+						<label class='col-md-4 layui-form-label'>细纹理：<span style="color:red">*</span></label>
 						<div class="col-md-8 layui-inline">
 							<select id="fineTexture0" name="fineTexture" lay-filter="search_type" lay-verify="required" lay-search>
 								<option value="">请选择</option>
@@ -58,7 +72,7 @@
 								<option value="rongmian">绒面</option>
 							</select>
 						</div>
-						<label class='col-md-4 layui-form-label'>颜色：</label>
+						<label class='col-md-4 layui-form-label'>颜色：<span style="color:red">*</span></label>
 						<div class="col-md-8 layui-inline">
 							<select id="colorType" name="colorType" lay-filter="search_type" lay-verify="required" lay-search>
 								<option value="">请选择</option>
@@ -68,7 +82,7 @@
 						</div>
 						<label class='col-md-4 layui-form-label'>备注：</label>
 						<div class="col-md-8 layui-inline">
-							<input class='layui-input' placeholder='添加备注' type='text' name='remarks' id='remarks0' >
+							<input class='layui-input' placeholder='添加备注 不确定的可以先选好 在这里注明' type='text' name='remarks' id='remarks0' >
 							<input type='hidden' name='fabricStyle' id='fabricStyle0' >
 						</div>
 					</div>
@@ -81,7 +95,7 @@
 				<h1 class="layui-colla-title">条纹</h1>
 				<div class="layui-colla-content layui-show">
 					<div class='layui-form-item form-group' id="stripecontent">
-						<label class='col-md-4 layui-form-label'>细纹理：</label>
+						<label class='col-md-4 layui-form-label'>细纹理：<span style="color:red">*</span></label>
 						<div class="col-md-8 layui-inline">
 							<select id="fineTexture1" name="fineTexture" lay-filter="search_type" lay-verify="required" lay-search>
 								<option value="">请选择</option>
@@ -90,7 +104,7 @@
 								<option value="rongmian">绒面</option>
 							</select>
 						</div>
-						<label class='col-md-4 layui-form-label'>风格：</label>
+						<label class='col-md-4 layui-form-label'>风格：<span style="color:red">*</span></label>
 						<div class="col-md-8 layui-inline">
 							<select id="stripeStype" name="stripeStype" lay-filter="search_type" lay-verify="required" lay-search>
 								<option value="">请选择</option>
@@ -106,13 +120,18 @@
 								<option value="anse">暗色</option>
 							</select>
 						</div>-->
-						<label class='col-md-4 layui-form-label'>条纹排列：</label>
-						<div class="col-md-8 layui-inline">
-							<input class='layui-input' placeholder='条纹排列' type='text' name='stripeArrangement' id='stripeArrangement' >
+						<label class='col-md-4 layui-form-label'>条纹排列：<span style="color:red">*</span></label>
+						<div class="col-md-6 layui-inline">
+							<input class='layui-input' placeholder='在图片中顺序标记条纹' type='text' name='stripeArrangement' id='stripeArrangement' readonly="readonly" >
 						</div>
+						<div class="col-md-2 ">
+							<button type="button" class="btn btn-primary " onclick="doBiaoji()">开始标记</button>
+							<button type="button" class="btn btn-info " onclick="stopBiaoji()">完成标记</button>
+						</div>
+						<div style="clear:both"></div>
 						<label class='col-md-4 layui-form-label'>备注：</label>
 						<div class="col-md-8 layui-inline">
-							<input class='layui-input' placeholder='添加备注' type='text' name='remarks' id='remarks1' >
+							<input class='layui-input' placeholder='添加备注 不确定的可以先选好 在这里注明' type='text' name='remarks' id='remarks1' >
 							<input type='hidden' name='fabricStyle' id='fabricStyle1' >
 						</div>
 					</div>
@@ -125,7 +144,7 @@
 				<h1 class="layui-colla-title">格子</h1>
 				<div class="layui-colla-content layui-show">
 					<div class='layui-form-item form-group' id="latticecontent">
-						<label class='col-md-4 layui-form-label'>细纹理：</label>
+						<label class='col-md-4 layui-form-label'>细纹理：<span style="color:red">*</span></label>
 						<div class="col-md-8 layui-inline">
 							<select id="fineTexture2" name="fineTexture" lay-filter="search_type" lay-verify="required" lay-search>
 								<option value="">请选择</option>
@@ -134,7 +153,7 @@
 								<option value="rongmian">绒面</option>
 							</select>
 						</div>
-						<label class='col-md-4 layui-form-label'>风格：</label>
+						<label class='col-md-4 layui-form-label'>风格：<span style="color:red">*</span></label>
 						<div class="col-md-8 layui-inline">
 							<select id="fabricStyle2" name="fabricStyle" lay-filter="search_type" lay-verify="required" lay-search>
 								<option value="">请选择</option>
@@ -150,17 +169,17 @@
 								<option value="anse">暗色</option>
 							</select>
 						</div>-->
-						<label class='col-md-4 layui-form-label'>经纱排列：</label>
+						<label class='col-md-4 layui-form-label'>经纱排列：<span style="color:red">*</span></label>
 						<div class="col-md-8 layui-inline">
 							<input class='layui-input' placeholder='经纱条纹排列' type='text' name='warpArrangement' id='warpArrangement' >
 						</div>
-						<label class='col-md-4 layui-form-label'>纬纱排列：</label>
+						<label class='col-md-4 layui-form-label'>纬纱排列：<span style="color:red">*</span></label>
 						<div class="col-md-8 layui-inline">
 							<input class='layui-input' placeholder='纬纱条纹排列' type='text' name='weftArrangement' id='weftArrangement' >
 						</div>
 						<label class='col-md-4 layui-form-label'>备注：</label>
 						<div class="col-md-8 layui-inline">
-							<input class='layui-input' placeholder='添加备注' type='text' name='remarks' id='remarks2' >
+							<input class='layui-input' placeholder='添加备注 不确定的可以先选好 在这里注明' type='text' name='remarks' id='remarks2' >
 						</div>
 					</div>
 				</div>
@@ -172,7 +191,7 @@
 				<h1 class="layui-colla-title">花纹</h1>
 				<div class="layui-colla-content layui-show">
 					<div class='layui-form-item form-group' id="patterncontent">
-						<label class='col-md-4 layui-form-label'>细纹理：</label>
+						<label class='col-md-4 layui-form-label'>细纹理：<span style="color:red">*</span></label>
 						<div class="col-md-8 layui-inline">
 							<select id="fineTexture3" name="fineTexture" lay-filter="search_type" lay-verify="required" lay-search>
 								<option value="">请选择</option>
@@ -181,7 +200,7 @@
 								<option value="rongmian">绒面</option>
 							</select>
 						</div>
-						<label class='col-md-4 layui-form-label'>风格：</label>
+						<label class='col-md-4 layui-form-label'>风格：<span style="color:red">*</span></label>
 						<div class="col-md-8 layui-inline">
 							<select id="fabricStyle3" name="fabricStyle" lay-filter="search_type" lay-verify="required" lay-search>
 								<option value="">请选择</option>
@@ -189,7 +208,7 @@
 								<option value="xiuxian">休闲</option>
 							</select>
 						</div>
-						<label class='col-md-4 layui-form-label'>成形工艺：</label>
+						<label class='col-md-4 layui-form-label'>成形工艺：<span style="color:red">*</span></label>
 						<div class="col-md-8 layui-inline">
 							<select id="formProcess" name="formProcess" lay-filter="search_type" lay-verify="required" lay-search>
 								<option value="">请选择</option>
@@ -199,7 +218,7 @@
 						</div>
 						<label class='col-md-4 layui-form-label'>备注：</label>
 						<div class="col-md-8 layui-inline">
-							<input class='layui-input' placeholder='添加备注' type='text' name='remarks' id='remarks3' >
+							<input class='layui-input' placeholder='添加备注 不确定的可以先选好 在这里注明' type='text' name='remarks' id='remarks3' >
 						</div>
 					</div>
 				</div>
@@ -207,13 +226,13 @@
 		</div>
 		<br>
 		<div class="col-md-8 layui-input-block " style="text-align: center">
-			<button class="btn btn-danger" onclick="goImg('0')">上一条</button>
+			<button class="btn btn-danger nextBtn" disabled="disabled"  onclick="goImg('0')">上一条</button>
 			&nbsp;&nbsp;&nbsp;
 			<!--<button id="savebtn" class="btn btn-primary" type="submit" onclick="add()">
 				<i class="fa fa-save"></i> 保存
 			</button>-->
 			&nbsp;&nbsp;&nbsp;
-			<button class="btn btn-danger" onclick="goImg('1')">下一条</button>
+			<button class="btn btn-danger nextBtn" disabled="disabled" onclick="goImg('1')">下一条</button>
 		</div>
 
 	</form>
@@ -230,6 +249,11 @@
             form.render();
             form.on('radio(zhongleifilter)', function(data){
                 var type=data.value;
+                if(type=="0"){
+					$(".nextBtn").attr("disabled","disabled");
+				}else{
+                    $(".nextBtn").removeAttr("disabled");
+                }
                 var types=["pattern","plain","stripe","lattice"];
                 for (var i=0;i<=types.length;i++){
                     if (type==types[i]){
@@ -257,10 +281,21 @@
 		    else if (imageType=="stripe"){index=1}
 		    else if (imageType=="lattice"){index=2}
 		    else if (imageType=="pattern"){index=3}
+		    if (formdata.fineTexture[index]==""){layer.msg('必填项必须填');return}
+		    if (index==0&&formdata.colorType==""){layer.msg('必填项必须填');return}
+		    if (index==1&&formdata.stripeStype==""){layer.msg('必填项必须填');return}
+		    if (index==1&&formdata.stripeArrangement==""){layer.msg('必填项必须填');return}
+		    if (index==2&&formdata.warpArrangement==""){layer.msg('必填项必须填');return}
+		    if (index==2&&formdata.weftArrangement==""){layer.msg('必填项必须填');return}
+		    if (index==2&&formdata.fabricStyle[index]==""){layer.msg('必填项必须填');return}
+		    if (index==3&&formdata.fabricStyle[index]==""){layer.msg('必填项必须填');return}
+		    if (index==3&&formdata.formProcess[index]==""){layer.msg('必填项必须填');return}
             formdata.fineTexture = formdata.fineTexture[index];
             formdata.remarks = formdata.remarks[index];
             formdata.fabricStyle = formdata.fabricStyle[index];
             formdata.isPreviousOrNext = type;
+
+
 			/*if (formdata.stripeArrangement == null){
 				formdata.stripeArrangement = "";
 			}
@@ -314,7 +349,7 @@
 						var imgpath = ""+url+"?token="+localStorage.getItem("token");
 						imgpath = imgpath.substr(18,imgpath.length)
 						imgpath ='/statics/'+imgpath;
-						console.log(data.imageUrl)
+						console.log(imgpath)
 						$('#imageUrl').val(data.imageUrl);
 						if(url.endsWith('.jpg') || url.endsWith('.bmp') || url.endsWith('.png') || url.endsWith('.gif')){
 							$('#demo2').html($("<img id='showImg1'  style='width: 80%;border-style:dashed;border-color:#FF9900;border-width:1px;' title='附件' alt='附件格式不支持预览'></img>").attr("src",imgpath))
@@ -394,13 +429,11 @@
                         $('#remarks'+index).val(data.remarks);
                         $('#fineTexture'+index).val(data.fineTexture);
                         $('#fabricStyle'+index).val(data.fabricStyle);
-
+                    var url="/statics/34573E.R-3.jpg";
                     var imgpath = ""+url+"?token="+localStorage.getItem("token");
-                    imgpath = imgpath.substr(18,imgpath.length)
-                    imgpath ='/statics/'+imgpath;
-                    $('#imageUrl').val(data.imageUrl);
+                    $('#imageUrl').val(imgpath);
                     if(url.endsWith('.jpg') || url.endsWith('.bmp') || url.endsWith('.png') || url.endsWith('.gif')){
-                        $('#demo2').append($("<img id='showImg1'  style='width: 80%;border-style:dashed;border-color:#FF9900;border-width:1px;' title='附件' alt='附件格式不支持预览'></img>").attr("src",imgpath))
+                        $('#showdiv').append($("<img id='showImg1'  style='width: 400px;height:650px;border:1px solid #ffcc00;'   ></img>").attr("src",imgpath))
                     }
                 }
             });
@@ -436,7 +469,120 @@
 
 			}*/
         }
+        var flag = 0;
+        function doBiaoji() {
+			if (flag==0){//可以标注点并显示出来
+
+			$(".labels").remove();
+			}
+        }
         initData();
+        function mouseOut() {
+            var x_div = document.getElementById("x_div"),
+                y_div = document.getElementById("y_div"),
+                Mouse = document.getElementById("Mouse");
+            x_div.style.display = "none";
+            y_div.style.display = "none";
+            Mouse.style.display = "none";
+
+        }
+
+        function mouseClickss() {
+            console.log(123)
+            var event = window.event || event;
+            var point1 = document.createElement('div');
+            point1.style.width = '3px';
+            point1.style.height = '3px';
+            point1.style.backgroundColor = '#ff151c';
+            point1.style.position = 'fixed';
+            point1.style.top = event.clientY + 'px';
+            point1.style.left = event.clientX + 'px';
+            point1.setAttribute("class","labels");
+            document.body.appendChild(point1);
+        }
+        
+        
+        function mouseMove(){
+            //获取图片的大小与原始位置
+            var height1 =$("#showImg1").outerHeight(true) ;
+            var width1 =$("#showImg1").outerWidth(true) ;
+            var left1 =$("#showImg1").offset().left;//绝对位置
+            var top1 =$("#showImg1").offset().top;
+            //获取图片的原始宽高
+            var myimage = document.getElementById("showImg1");
+            if (typeof myimage.naturalWidth == "undefined") {
+                // IE 6/7/8
+                var i = new Image();
+                i.src = myimage.src;
+                var naturalWidth1 = i.width;
+                var naturalHeight1 = i.height;
+            }
+            else {
+                // HTML5 browsers
+                var naturalWidth1 = myimage.naturalWidth;
+                var naturalHeight1 = myimage.naturalHeight;
+            }
+            var event = window.event || event;
+            var x_div = document.getElementById("x_div"),
+                y_div = document.getElementById("y_div"),
+                Mouse = document.getElementById("Mouse"),
+                top = event.clientY > (window.screen.availHeight/2) ? -30 : 10,
+                left = event.clientX > (window.screen.availWidth/2) ? -120 : 20;
+
+            document.getElementById("XXX").innerHTML = Math.round((event.clientX-left1)*naturalWidth1/400);
+            document.getElementById("YYY").innerHTML = Math.round((event.clientY-top1)*naturalHeight1/650);
+
+            Mouse.style.top = event.clientY + top + "px";
+            Mouse.style.left = event.clientX + left + "px";
+            x_div.style.display = "block";
+            y_div.style.display = "block";
+            Mouse.style.display = "block";
+
+            x_div.style.top = event.clientY + "px";
+            y_div.style.left = event.clientX + "px";
+			// 定义大小
+            x_div.style.width = width1+ 'px';
+            y_div.style.height = height1+ 'px';
+            x_div.style.left=left1+ 'px';
+            y_div.style.top=top1+ 'px';
+        }
+
+       /* var container = document.getElementById("showImg1");
+        var height =$("#showImg1").outerHeight(true) ;
+        var width =$("#showImg1").outerWidth(true) ;
+        var left1 =$("#showImg1").offset().left;
+        var top1 =$("#showImg1").offset().top;
+        var ox = document.createElement('div');
+        var oy = document.createElement('div');
+        console.log(left1)
+        console.log(top1)
+        ox.style.width = width+ 'px';
+        ox.style.height = '1px';
+        ox.style.backgroundColor = '#ddd';
+        ox.style.position = 'fixed';
+        ox.style.left = left1+container.offsetLeft;
+        document.body.appendChild(ox);
+        oy.style.height = height+ 'px';
+        oy.style.width = '1px';
+        oy.style.backgroundColor = '#ddd';
+        oy.style.position = 'fixed';
+        oy.style.top = top1+container.offsetHeight;
+        document.body.appendChild(oy);
+        function showShiZi() {
+            var event = window.event || event;
+            var pagex = event.pageX || scroll().left + event.clientX;
+            var pagey = event.pageY || scroll().top + event.clientY;
+            //3.获取盒子在整个页面的位置
+			var div = document.getElementById("demo2");
+            var xx = div.offsetLeft;
+            var yy = div.offsetTop;
+            //4.用鼠标的位置减去盒子的位置赋值给盒子的内容。
+            var targetx = pagex - xx;
+            var targety = pagey - yy;
+            ox.style.top = pagey + 'px';
+            oy.style.left = pagex + 'px';
+            return;
+        }*/
 	</script>
 </body>
 </html>
