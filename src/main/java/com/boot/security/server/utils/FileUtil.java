@@ -20,6 +20,18 @@ import org.springframework.web.multipart.MultipartFile;
  *
  */
 public class FileUtil {
+	/*
+	 * Java文件操作 获取文件扩展名
+	 * */
+	public static String getExtensionName(String filename) {
+		if ((filename != null) && (filename.length() > 0)) {
+			int dot = filename.lastIndexOf('.');
+			if ((dot > -1) && (dot < (filename.length() - 1))) {
+				return filename.substring(dot + 1);
+			}
+		}
+		return filename;
+	}
 
 	public static String saveFile(MultipartFile file, String pathname) {
 		try {

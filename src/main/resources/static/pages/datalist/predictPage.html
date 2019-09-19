@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" media="screen" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+	<style>
+		* {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: content-box;
+		}
+		small {
+			color: red;
+		}
+		html{
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<form class="layui-form" onsubmit="return false" id="form">
+		<fieldset>
+			<div class="layui-form-item form-group view">
+				<label class='col-md-2 layui-form-label' style="text-align: right">上传图片</label>
+				<div class='col-md-10' style="text-align: left">
+					<input class='form-control'  placeholder='附件路径' type='hidden' name='imgurl' id='imgurl' >
+					<button type="button" class="btn " id="test8" title="选择一个文件添加附件，预览只支持图片格式">选择文件</button>
+					<button type="button" class="btn btn-primary" title="选定预览的文件并上传，上传后才会保存附件" id="test9">上传预测</button>
+					<label id="upinfos"></label>
+				</div>
+			</div>
+			<!--<div class="layui-form-item form-group">
+				<div class="col-md-5 layui-input-block " style="text-align: center">
+					&nbsp;&nbsp;&nbsp;
+
+				</div>
+			</div>-->
+		</fieldset>
+	</form>
+</div>
+<div style="clear: both"></div>
+<div id="imgDiv"  style="width: 50% ;text-align:left ;float:left;display: block">
+	<div class="layui-upload-list" id="demo2"><img src="20190218-213245-174.png" style="width: 80%"></div>
+</div>
+<div id="imgDiv3"  style="width: 50% ;text-align:left ;float:right;display: block">
+	<div class="layui-upload-list" id="demo3"><img src="20190218-213245-174pred_density_warp.png" style="width: 80%"></div>
+</div>
+
+
+<script type="text/javascript" src="../../js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="../../js/jq.js"></script>
+<script type="text/javascript" src="../../js/plugin/bootstrapvalidator/bootstrapValidator.min.js"></script>
+<script type="text/javascript" src="../../js/plugin/bootstrapvalidator/zh_CN.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript">
+    layui.use(['layer','laydate','form'], function(){
+        var form = layui.form;
+        form.render();
+    });
+    //选完文件后不自动上传
+    layui.use('upload', function(){
+        var upload = layui.upload;
+        upload.render({
+            elem: '#test8'
+            ,url: '/junDatalists/doPredict'
+            ,auto: false
+            ,accept: 'file' //允许上传的文件类型
+            ,multiple: false
+            ,bindAction: '#test9'
+            ,number: 5
+            ,choose: function(obj){
+                $('#demo2').html("");
+                obj.preview(function(index, file, result){
+                    $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+                    $("#upState").html("未上传")
+                    $("#upinfos").html("<font color='red'>未上传</font>")
+                    $("#imgDiv").show()
+                });
+            }
+            ,done: function(res){
+                if (res.result=="true"){
+                    console.log(res);
+                    layer.msg(res.msg);
+                    document.getElementById("imgurl").value = res.pathname;
+                    var imgpath = ""+res.warpImg+"?token="+localStorage.getItem("token");
+                    $('#demo3').append('<img src="'+ imgpath +'" class="layui-upload-img">')
+                    $("#upState").html("已上传成功")
+                    $("#upinfos").html("<font color='green'>成功</font>")
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
