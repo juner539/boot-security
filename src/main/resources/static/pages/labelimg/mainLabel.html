@@ -29,17 +29,17 @@
 <div   id="imgDiv"  style="width: 30% ;float:left;text-align: center">
 		<div style="text-align:center ;font-size: x-large"><b>图片信息</b>&nbsp;&nbsp;&nbsp;</div>
 
-		<div  onclick="mouseClickss()"   id="demo2" style="text-align: center;width: 400px;height: 650px;margin-right: auto;margin-left: auto;" >
+		<div     id="demo2" style="text-align: center;width: 400px;height: 650px;margin-right: auto;margin-left: auto;" >
 			<div id="Mouse">X轴:<strong id="XXX"></strong> & Y轴:<strong id="YYY"></strong></div>
 			<div id="x_div"></div>
 			<div id="y_div"></div>
-			<div id="showdiv" onmousemove="mouseMove()" ></div>
+			<div id="showdiv" ></div>
 		</div>
 	<!--<span style="font-size: x-large"><b>图片预览</b>&nbsp;&nbsp;&nbsp;<font color="red"><span id="upState"  style="font-size: medium;">未上传</span></font>&nbsp;&nbsp;&nbsp;<button class="layui-btn  " onclick="goupload()">确定上传</button></span>
 	-->
 </div>
 
-<div  class="col-xs-12 col-sm-12 col-md-12 col-lg-12"   style="width: 70% ;float:right;border:1px solid #ffcc00;background:#fffff7;font-size: x-large">
+<div  class="col-xs-12 col-sm-12 col-md-12 col-lg-12"   style="width: 55% ;float:right;border:1px solid #ffcc00;background:#fffff7;font-size: x-large">
 	<div style="text-align:center ;font-size: xx-large"><b id="viewTitle">图片标注</b>&nbsp;&nbsp;&nbsp;<span style="text-align: right;font-size: medium;float: right">共 500 条 当前：<span id="currentNum" style="color: red">1</span></span></div>
 	<form class="layui-form" onsubmit="return false" id="form">
 		<input type="hidden" name="id" id="id">
@@ -120,14 +120,14 @@
 								<option value="anse">暗色</option>
 							</select>
 						</div>-->
-						<label class='col-md-4 layui-form-label'>条纹排列：<span style="color:red">*</span></label>
+<!--						<label class='col-md-4 layui-form-label'>条纹排列：<span style="color:red">*</span></label>-->
 						<div class="col-md-6 layui-inline">
-							<input class='layui-input' placeholder='在图片中顺序标记条纹' type='text' name='stripeArrangement' id='stripeArrangement' readonly="readonly" >
+							<input type="hidden" class='layui-input' placeholder='在图片中顺序标记条纹' type='text' name='stripeArrangement' id='stripeArrangement' readonly="readonly" >
 						</div>
-						<div class="col-md-2 ">
-							<button type="button" class="btn btn-primary " onclick="doBiaoji()">开始标记</button>
-							<button type="button" class="btn btn-info " onclick="stopBiaoji()">完成标记</button>
-						</div>
+<!--						<div class="col-md-2 ">-->
+<!--							<button type="button" class="btn btn-primary " onclick="doBiaoji()">开始标记</button>-->
+<!--							<button type="button" class="btn btn-info " onclick="stopBiaoji()">完成标记</button>-->
+<!--						</div>-->
 						<div style="clear:both"></div>
 						<label class='col-md-4 layui-form-label'>备注：</label>
 						<div class="col-md-8 layui-inline">
@@ -169,14 +169,15 @@
 								<option value="anse">暗色</option>
 							</select>
 						</div>-->
-						<label class='col-md-4 layui-form-label'>经纱排列：<span style="color:red">*</span></label>
+<!--						<label class='col-md-4 layui-form-label'>经纱排列：<span style="color:red">*</span></label>-->
 						<div class="col-md-8 layui-inline">
-							<input class='layui-input' placeholder='经纱条纹排列' type='text' name='warpArrangement' id='warpArrangement' >
+							<input type="hidden" class='layui-input' placeholder='经纱条纹排列' type='text' name='warpArrangement' id='warpArrangement' >
 						</div>
-						<label class='col-md-4 layui-form-label'>纬纱排列：<span style="color:red">*</span></label>
+<!--						<label class='col-md-4 layui-form-label'>纬纱排列：<span style="color:red">*</span></label>-->
 						<div class="col-md-8 layui-inline">
-							<input class='layui-input' placeholder='纬纱条纹排列' type='text' name='weftArrangement' id='weftArrangement' >
+							<input type="hidden" class='layui-input' placeholder='纬纱条纹排列' type='text' name='weftArrangement' id='weftArrangement' >
 						</div>
+						<div style="clear:both"></div>
 						<label class='col-md-4 layui-form-label'>备注：</label>
 						<div class="col-md-8 layui-inline">
 							<input class='layui-input' placeholder='添加备注 不确定的可以先选好 在这里注明' type='text' name='remarks' id='remarks2' >
@@ -284,9 +285,9 @@
 		    if (formdata.fineTexture[index]==""){layer.msg('必填项必须填');return}
 		    if (index==0&&formdata.colorType==""){layer.msg('必填项必须填');return}
 		    if (index==1&&formdata.stripeStype==""){layer.msg('必填项必须填');return}
-		    if (index==1&&formdata.stripeArrangement==""){layer.msg('必填项必须填');return}
-		    if (index==2&&formdata.warpArrangement==""){layer.msg('必填项必须填');return}
-		    if (index==2&&formdata.weftArrangement==""){layer.msg('必填项必须填');return}
+		    //if (index==1&&formdata.stripeArrangement==""){layer.msg('必填项必须填');return}
+		    //if (index==2&&formdata.warpArrangement==""){layer.msg('必填项必须填');return}
+		    //if (index==2&&formdata.weftArrangement==""){layer.msg('必填项必须填');return}
 		    if (index==2&&formdata.fabricStyle[index]==""){layer.msg('必填项必须填');return}
 		    if (index==3&&formdata.fabricStyle[index]==""){layer.msg('必填项必须填');return}
 		    if (index==3&&formdata.formProcess[index]==""){layer.msg('必填项必须填');return}
@@ -345,14 +346,12 @@
 							$('#remarks'+index).val(data.remarks);
 							$('#fineTexture'+index).val(data.fineTexture);
 							$('#fabricStyle'+index).val(data.fabricStyle);
-
-						var imgpath = ""+url+"?token="+localStorage.getItem("token");
-						imgpath = imgpath.substr(18,imgpath.length)
-						imgpath ='/statics/'+imgpath;
+						var url= data.imageUrl;
+						var imgpath = "/statics/"+url+"?token="+localStorage.getItem("token");
 						console.log(imgpath)
 						$('#imageUrl').val(data.imageUrl);
 						if(url.endsWith('.jpg') || url.endsWith('.bmp') || url.endsWith('.png') || url.endsWith('.gif')){
-							$('#demo2').html($("<img id='showImg1'  style='width: 80%;border-style:dashed;border-color:#FF9900;border-width:1px;' title='附件' alt='附件格式不支持预览'></img>").attr("src",imgpath))
+							$('#demo2').html($("<img id='showImg1'  style='width: 600px;height:970px;border-style:dashed;border-color:#FF9900;border-width:1px;' title='附件' alt='附件格式不支持预览'></img>").attr("src",imgpath))
 						}
 
 					});
@@ -400,7 +399,7 @@
                 contentType: "application/json; charset=utf-8",
                 data : JSON.stringify(formdata),
                 success : function(data) {
-                    console.log(data);
+                    //console.log(data);
                     var url = data.imageUrl;
 						$("#currentNum").html(data.labeledNum);
                         $('#id').val(data.id);
@@ -429,11 +428,13 @@
                         $('#remarks'+index).val(data.remarks);
                         $('#fineTexture'+index).val(data.fineTexture);
                         $('#fabricStyle'+index).val(data.fabricStyle);
-                    var url="/statics/34573E.R-3.jpg";
-                    var imgpath = ""+url+"?token="+localStorage.getItem("token");
-                    $('#imageUrl').val(imgpath);
+                    //var url="34573E.R-3.jpg";
+                    var url= data.imageUrl;
+                    var imgpath = "/statics/"+url+"?token="+localStorage.getItem("token");
+                    console.log(imgpath);
+                    $('#imageUrl').val(url);
                     if(url.endsWith('.jpg') || url.endsWith('.bmp') || url.endsWith('.png') || url.endsWith('.gif')){
-                        $('#showdiv').append($("<img id='showImg1'  style='width: 400px;height:650px;border:1px solid #ffcc00;'   ></img>").attr("src",imgpath))
+                        $('#showdiv').append($("<img id='showImg1'  style='width: 600px;height:970px;border:1px solid #ffcc00;'   ></img>").attr("src",imgpath))
                     }
                 }
             });

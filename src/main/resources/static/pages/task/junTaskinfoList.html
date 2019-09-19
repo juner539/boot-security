@@ -145,7 +145,7 @@ $("#searchBt").click(function(){
 function getRoleId(){
     var roleId = 1  // 默认业务员
     $.ajax({
-        url : '/users/currentRoleId',
+        url : '/users/getRoleId',
         type : 'get',
         async: false,//同步
         success : function(data) {

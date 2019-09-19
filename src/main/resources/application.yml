@@ -45,7 +45,7 @@ mybatis:
   configuration:
     mapUnderscoreToCamelCase: true
 files:
-  path: ${file-path:d:/files}
+  path: ${file-path:C:/webfiles/SunImage}
 logging:
   config: classpath:logback-admin.xml
 log:
