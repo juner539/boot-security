@@ -117,6 +117,7 @@ public class JunLabelrecordController {
                     junLatticefabric.setImageUrl(junAllfabric.getImageUrl());
                     junLatticefabric.setWarpArrangement(junAllfabric.getWarpArrangement());
                     junLatticefabric.setWeftArrangement(junAllfabric.getWeftArrangement());
+                    junLatticefabric.setFormType(junAllfabric.getLatticeFormType());
                     junLatticefabric.setRemarks(junAllfabric.getRemarks());
                     junLatticefabricDao.save(junLatticefabric);
                     labelId = junLatticefabric.getId();
@@ -129,6 +130,7 @@ public class JunLabelrecordController {
                     junStripefabric.setRemarks(junAllfabric.getRemarks());
                     junStripefabric.setStripeArrangement(junAllfabric.getStripeArrangement());
                     junStripefabric.setStripeStype(junAllfabric.getStripeStype());
+                    junStripefabric.setFormType(junAllfabric.getStripeFormType());
                     junStripefabricDao.save(junStripefabric);
                     labelId = junStripefabric.getId();
                 }
@@ -167,6 +169,7 @@ public class JunLabelrecordController {
                         junStripefabric.setStripeArrangement(junAllfabric.getStripeArrangement());
                         junStripefabric.setRemarks(junAllfabric.getRemarks());
                         junStripefabric.setFineTexture(junAllfabric.getFineTexture());
+                        junStripefabric.setFormType(junAllfabric.getStripeFormType());
                         junStripefabricDao.update(junStripefabric);
                     }
                     if (junLabelrecord.getImageType().equals("pattern")) {
@@ -180,6 +183,7 @@ public class JunLabelrecordController {
                     if (junLabelrecord.getImageType().equals("lattice")) {
                         JunLatticefabric junLatticefabric = junLatticefabricDao.getById(junLabelrecord.getLabelId());
                         junLatticefabric.setRemarks(junAllfabric.getRemarks());
+                        junLatticefabric.setFormType(junAllfabric.getLatticeFormType());
                         junLatticefabric.setWeftArrangement(junAllfabric.getWeftArrangement());
                         junLatticefabric.setWarpArrangement(junAllfabric.getWarpArrangement());
                         junLatticefabric.setFineTexture(junAllfabric.getFineTexture());
@@ -216,6 +220,7 @@ public class JunLabelrecordController {
                         junLatticefabric.setFabricStyle(junAllfabric.getFabricStyle());
                         junLatticefabric.setFineTexture(junAllfabric.getFineTexture());
                         junLatticefabric.setImageType(junAllfabric.getImageType());
+                        junLatticefabric.setFormType(junAllfabric.getLatticeFormType());
                         junLatticefabric.setImageUrl(junAllfabric.getImageUrl());
                         junLatticefabric.setWarpArrangement(junAllfabric.getWarpArrangement());
                         junLatticefabric.setWeftArrangement(junAllfabric.getWeftArrangement());
@@ -226,6 +231,7 @@ public class JunLabelrecordController {
                     if (junAllfabric.getImageType().equals("stripe")) {
                         JunStripefabric junStripefabric = new JunStripefabric();
                         junStripefabric.setFineTexture(junAllfabric.getFineTexture());
+                        junStripefabric.setFormType(junAllfabric.getStripeFormType());
                         junStripefabric.setImageType(junAllfabric.getImageType());
                         junStripefabric.setImageUrl(junAllfabric.getImageUrl());
                         junStripefabric.setRemarks(junAllfabric.getRemarks());
@@ -279,6 +285,7 @@ public class JunLabelrecordController {
                 if (junResRecord.getImageType().equals("stripe")) {
                     JunStripefabric junSF = junStripefabricDao.getById(junResRecord.getLabelId());
                     result.setRemarks(junSF.getRemarks());
+                    result.setStripeFormType(junSF.getFormType());
                     result.setFineTexture(junSF.getFineTexture());
                     result.setStripeStype(junSF.getStripeStype());
                     result.setStripeArrangement(junSF.getStripeArrangement());
@@ -288,6 +295,7 @@ public class JunLabelrecordController {
                     JunLatticefabric junLF = junLatticefabricDao.getById(junResRecord.getLabelId());
                     result.setIslattice(1);
                     result.setWarpArrangement(junLF.getWarpArrangement());
+                    result.setLatticeFormType(junLF.getFormType());
                     result.setWeftArrangement(junLF.getWeftArrangement());
                     result.setFabricStyle(junLF.getFabricStyle());
                     result.setFineTexture(junLF.getFineTexture());

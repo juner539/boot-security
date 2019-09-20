@@ -10,6 +10,15 @@ public class JunStripefabric extends BaseEntity<Long> {
 	private String stripeArrangement;
 	private String stripeStype;
 	private String remarks;
+	private String formType;
+
+	public String getFormType() {
+		return formType;
+	}
+
+	public void setFormType(String formType) {
+		this.formType = formType;
+	}
 
 	public String getImageUrl() {
 		return imageUrl;

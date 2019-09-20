@@ -11,6 +11,15 @@ public class JunLatticefabric extends BaseEntity<Long> {
 	private String weftArrangement;
 	private String fabricStyle;
 	private String remarks;
+	private String formType;
+
+	public String getFormType() {
+		return formType;
+	}
+
+	public void setFormType(String formType) {
+		this.formType = formType;
+	}
 
 	public String getImageUrl() {
 		return imageUrl;

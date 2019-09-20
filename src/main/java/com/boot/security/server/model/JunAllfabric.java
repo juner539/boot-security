@@ -19,8 +19,27 @@ public class JunAllfabric extends BaseEntity<Long> {
 	private String weftArrangement;
 	private String fabricStyle;
 	private String remarks;
+	private String latticeFormType;
+	private String stripeFormType;
 	private String formProcess;
 	private String colorType;
+
+
+	public String getLatticeFormType() {
+		return latticeFormType;
+	}
+
+	public void setLatticeFormType(String latticeFormType) {
+		this.latticeFormType = latticeFormType;
+	}
+
+	public String getStripeFormType() {
+		return stripeFormType;
+	}
+
+	public void setStripeFormType(String stripeFormType) {
+		this.stripeFormType = stripeFormType;
+	}
 
 	public Long getTaskId() {
 		return taskId;

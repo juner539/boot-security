@@ -24,7 +24,7 @@ public interface JunStripefabricDao {
     int update(JunStripefabric junStripefabric);
     
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    @Insert("insert into jun_stripefabric(imageUrl, imageType, fineTexture, stripeArrangement, stripeStype, remarks, createTime, updateTime) values(#{imageUrl}, #{imageType}, #{fineTexture}, #{stripeArrangement}, #{stripeStype}, #{remarks}, #{createTime}, #{updateTime})")
+    @Insert("insert into jun_stripefabric(imageUrl, imageType, formType, fineTexture, stripeArrangement, stripeStype, remarks, createTime, updateTime) values(#{imageUrl}, #{imageType}, #{formType}, #{fineTexture}, #{stripeArrangement}, #{stripeStype}, #{remarks}, #{createTime}, #{updateTime})")
     int save(JunStripefabric junStripefabric);
     
     int count(@Param("params") Map<String, Object> params);

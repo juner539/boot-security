@@ -8,6 +8,9 @@
 			<if test="params.id != null and params.id != ''">
 				and id = #{params.id} 
 			</if>
+			<if test="params.formType != null and params.formType != ''">
+				and id = #{params.formType}
+			</if>
 			<if test="params.imageUrl != null and params.imageUrl != ''">
 				and imageUrl = #{params.imageUrl} 
 			</if>
@@ -74,6 +77,9 @@
 			</if>
 			<if test="updateTime != null">
 				updateTime = #{updateTime}, 
+			</if>
+			<if test="formType != null">
+				formType = #{formType},
 			</if>
 
 		</set>

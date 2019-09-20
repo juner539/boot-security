@@ -24,7 +24,7 @@ public interface JunLatticefabricDao {
     int update(JunLatticefabric junLatticefabric);
     
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    @Insert("insert into jun_latticefabric(imageUrl, imageType, fineTexture, warpArrangement, weftArrangement, fabricStyle, remarks, createTime, updateTime) values(#{imageUrl}, #{imageType}, #{fineTexture}, #{warpArrangement}, #{weftArrangement}, #{fabricStyle}, #{remarks}, #{createTime}, #{updateTime})")
+    @Insert("insert into jun_latticefabric(imageUrl, imageType, formType, fineTexture, warpArrangement, weftArrangement, fabricStyle, remarks, createTime, updateTime) values(#{imageUrl}, #{imageType}, #{formType}, #{fineTexture}, #{warpArrangement}, #{weftArrangement}, #{fabricStyle}, #{remarks}, #{createTime}, #{updateTime})")
     int save(JunLatticefabric junLatticefabric);
     
     int count(@Param("params") Map<String, Object> params);

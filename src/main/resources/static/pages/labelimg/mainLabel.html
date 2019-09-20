@@ -49,8 +49,8 @@
 		<div class="layui-form-item">
 			<label class="layui-form-label">织物种类：</label>
 			<div class="layui-input-block " >
-				<input type="radio" lay-filter="zhongleifilter" name="imageType" id="isChecked" value="0" title="未选择" checked>
-				<input type="radio" lay-filter="zhongleifilter" name="imageType" id="plain" value="plain" title="素色">
+				<input type="radio" lay-filter="zhongleifilter" name="imageType" id="isChecked" value="0" title="未选择" checked = "checked">
+				<input type="radio" lay-filter="zhongleifilter" name="imageType" id="plain" value="plain" title="素色" 	>
 				<input type="radio" lay-filter="zhongleifilter" name="imageType" id="stripe" value="stripe" title="条纹" >
 				<input type="radio" lay-filter="zhongleifilter" name="imageType" id="lattice" value="lattice" title="格子">
 				<input type="radio" lay-filter="zhongleifilter" name="imageType" id="pattern" value="pattern" title="花纹">
@@ -112,6 +112,14 @@
 								<option value="xiuxian">休闲</option>
 							</select>
 						</div>
+						<label class='col-md-4 layui-form-label'>成形方式：<span style="color:red">*</span></label>
+						<div class="col-md-8 layui-inline">
+							<select id="stripeFormType" name="stripeFormType" lay-filter="search_type" lay-verify="required" lay-search>
+								<option value="">请选择</option>
+								<option value="yarnArrangement">纱线排列</option>
+								<option value="orginalForm">组织结构</option>
+							</select>
+						</div>
 						<!--<label class='col-md-4 layui-form-label'>颜色：</label>
 						<div class="col-md-8 layui-inline">
 							<select id="colorType" name="colorType" lay-filter="search_type" lay-verify="required" lay-search>
@@ -159,6 +167,14 @@
 								<option value="">请选择</option>
 								<option value="shangwu">商务</option>
 								<option value="xiuxian">休闲</option>
+							</select>
+						</div>
+						<label class='col-md-4 layui-form-label'>成形方式：<span style="color:red">*</span></label>
+						<div class="col-md-8 layui-inline">
+							<select id="latticeFormType" name="latticeFormType" lay-filter="search_type" lay-verify="required" lay-search>
+								<option value="">请选择</option>
+								<option value="yarnArrangement">纱线排列</option>
+								<option value="orginalForm">组织结构</option>
 							</select>
 						</div>
 						<!--<label class='col-md-4 layui-form-label'>颜色：</label>
@@ -245,10 +261,12 @@
 	<script type="text/javascript" src="../../layui/layui.js"></script>
 	<script type="text/javascript">
 		layui.use(['layer','form'], function(){
+
 		    var layer = layui.layer;
             var form = layui.form;
             form.render();
             form.on('radio(zhongleifilter)', function(data){
+				console.log(234)
                 var type=data.value;
                 if(type=="0"){
 					$(".nextBtn").attr("disabled","disabled");
@@ -285,6 +303,8 @@
 		    if (formdata.fineTexture[index]==""){layer.msg('必填项必须填');return}
 		    if (index==0&&formdata.colorType==""){layer.msg('必填项必须填');return}
 		    if (index==1&&formdata.stripeStype==""){layer.msg('必填项必须填');return}
+			if (index==1&&formdata.stripeFormType==""){layer.msg('必填项必须填');return}
+			if (index==2&&formdata.latticeFormType==""){layer.msg('必填项必须填');return}
 		    //if (index==1&&formdata.stripeArrangement==""){layer.msg('必填项必须填');return}
 		    //if (index==2&&formdata.warpArrangement==""){layer.msg('必填项必须填');return}
 		    //if (index==2&&formdata.weftArrangement==""){layer.msg('必填项必须填');return}
@@ -317,7 +337,7 @@
 						console.log(data);
 						var url = data.imageUrl;
 						$('#form')[0].reset();
-							//console.log(data)
+							console.log(data)
 							$('#id').val(data.id);
 
 							$('#isplain').val(data.isplain);
@@ -327,7 +347,9 @@
 							$('#labeledNum').val(data.labeledNum);
 							$('#stripeStype').val(data.stripeStype);
 							$('#imageUrl').val(data.imageUrl);
-							$('#imageType').val(data.imageType);
+						    $("input[lay-filter='zhongleifilter']").val(data.imageType);
+							$('#latticeFormType').val(data.latticeFormType);
+							$('#stripeFormType').val(data.stripeFormType);
 							$('#warpArrangement').val(data.warpArrangement);
 							$('#weftArrangement').val(data.weftArrangement);
 							$('#stripeArrangement').val(data.stripeArrangement);
@@ -410,7 +432,9 @@
                         $('#labeledNum').val(data.labeledNum);
                         $('#stripeStype').val(data.stripeStype);
                         $('#imageUrl').val(data.imageUrl);
-                        $('#imageType').val(data.imageType);
+						$('#latticeFormType').val(data.latticeFormType);
+						$('#stripeFormType').val(data.stripeFormType);
+					    $("input[lay-filter='zhongleifilter']").val(data.imageType);
                         $('#warpArrangement').val(data.warpArrangement);
                         $('#weftArrangement').val(data.weftArrangement);
                         $('#stripeArrangement').val(data.stripeArrangement);

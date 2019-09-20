@@ -35,6 +35,9 @@
 			<if test="params.updateTime != null and params.updateTime != ''">
 				and updateTime = #{params.updateTime} 
 			</if>
+			<if test="params.formType != null and params.formType != ''">
+				and formType = #{params.formType}
+			</if>
 		
 		</where>
 	</sql>
@@ -80,6 +83,9 @@
 			</if>
 			<if test="updateTime != null">
 				updateTime = #{updateTime}, 
+			</if>
+			<if test="formType != null">
+				formType = #{formType},
 			</if>
 
 		</set>
